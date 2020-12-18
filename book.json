@@ -1,0 +1,40 @@
+{
+  "title": "知识文档",
+  "author": "作者",
+  "description": "知识文档",
+  "language": "zh-hans",
+  "styles": {
+    "website": "./public-repertory/css/gitbook-configure.css"
+  },
+  "plugins": [
+    "mathjax",
+    "search-pro",
+    "-sharing",
+    "-search",
+    "back-to-top-button",
+    "splitter",
+    "code",
+    "page-toc-button",
+    "pageview-count",
+    "lightbox",
+    "chapter-fold",
+	"mermaid-gb3"
+  ],
+  "pluginsConfig": {
+    "prism": {
+      "css": [
+        "prismjs/themes/prism-solarizedlight.css"
+      ],
+      "lang": {
+        "shell": "bash"
+      }
+    },
+    "anchor-navigation-ex": {
+      "showLevel": false
+    },
+    "page-toc-button": {
+      "maxTocDepth": 2,
+      "minTocSize": 2
+    }
+  }
+}
