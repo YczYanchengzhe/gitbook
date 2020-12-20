@@ -1,12 +1,6 @@
 package yczyanchengzhe.structure.list;
 
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 /**
  * @ClassName: MyLinkLIstTest
