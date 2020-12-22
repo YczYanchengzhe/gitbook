@@ -48,7 +48,7 @@
 
 3. 举例和画图 , 帮助理解
 
-## 五.链表练习
+## 五.链表练习[详情](https://github.com/YczYanchengzhe/gitbook/tree/main/project/data-structure_project/src/main/java/yczyanchengzhe/structure/list)
 > LeetCode : 206，141，21，19，876
 
 #### 1.单链表反转
