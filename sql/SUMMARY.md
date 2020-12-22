@@ -1,17 +1,17 @@
 # 数据库相关知识
 
 ## 基础篇
-* [数据库简介](Readme.md)
-* [SQL增删改查](start.md)
-* [SQL数据过滤](start-2.md)
-* [SQL函数](start-function.md)
-* [SQL视图](view.md)
-* [SQL存储过程](StoredProcedure.md)
-* [事务](transaction.md) 
-* [子查询与连接](sub-queries .md) 
-* [数据库相关知识](sql-about.md)
+* [数据库简介](基础/Readme.md)
+* [SQL增删改查](基础/start.md)
+* [SQL数据过滤](基础/start-2.md)
+* [SQL函数](基础/start-function.md)
+* [SQL视图](基础/view.md)
+* [SQL存储过程](基础/StoredProcedure.md)
+* [事务](基础/transaction.md) 
+* [子查询与连接](基础/sub-queries .md) 
+* [数据库相关知识](基础/sql-about.md)
 ## 调优篇
-
+* [索引](调优/index.md)
 
 
 
