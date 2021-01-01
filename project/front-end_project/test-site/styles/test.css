@@ -1,0 +1,17 @@
+p,li,h1 {
+    color: red;
+    width: 500px;
+    border: 1px solid black;
+}
+#my-id {
+    color: blue;
+}
+.my-class {
+    color: blueviolet;
+}
+img[src] {
+    width: 700px;
+}
+a:hover {
+    color: red;
+}
