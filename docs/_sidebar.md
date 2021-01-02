@@ -53,5 +53,7 @@
   * [一些思考](read\一些思考\think.md) 
   * [有趣的文字](read\有趣的文字\积累.md) 
 * 开源
-
   * [skywalking](open_source\skywalking\skywalking.md) 
+* 问题
+  * [搭建博客](problem\blog\blog.md) 
+
