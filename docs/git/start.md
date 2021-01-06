@@ -274,6 +274,8 @@ git stash apply
 #### (1) 下载
 ```shell
 # 备份远端代码
+# 只拉取最近一次的提交
+git clone --depends=1
 #哑协议备份
 git clone --bare github.com/YczYanchengzhe/gitbook.git   ya.git
 #智能协议备份
