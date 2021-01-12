@@ -1,8 +1,8 @@
-# JVM 相关知识
+# JVM-GC 相关原理
 
 > 不积跬步无以至千里 , 不积小流无以成江海!
 > 拼搏吧,骚年!
 
 
 
-![JVM](../../resources/java/jvm/JVM.png)
+常见gc以及原理分析
