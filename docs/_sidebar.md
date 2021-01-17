@@ -1,0 +1,61 @@
+* 必备知识
+	* Git
+	  * [Git简介](git/README.md)
+	  * [快速开始](git/start.md)
+	  * [Git相关知识](git/git-file.md)
+	  * [使用禁忌](git/taboo.md)
+	  * [GitHub简介](git/github.md)
+	* 数据库
+	  * [数据库简介](sql/基础/Readme.md)
+	  * [SQL增删改查](sql/基础/start.md)
+	  * [SQL数据过滤](sql/基础/start-2.md)
+	  * [SQL函数](sql/基础/start-function.md)
+	  * [SQL视图](sql/基础/view.md)
+	  * [SQL存储过程](sql/基础/StoredProcedure.md)
+	  * [事务](sql/基础/transaction.md)
+	  * [子查询与连接](sql/基础/sub-queries.md) 
+	  * [数据库相关知识](sql/基础/sql-about.md)
+	  * [索引](sql/调优/index.md)
+	* 命令相关
+	  * [Linux命令](cmd\linux.md)
+	  * [Java命令](cmd\java.md)
+* 数据结构
+  * [简介](数据结构/README.md)
+  * [复杂度分析](数据结构/complexity.md) 
+  * [数组](数据结构/array.md) 
+  * [链表](数据结构/linkedList.md) 
+* Java
+  * JVM
+    *  [简介](java\JVM\README.md) 
+  * NIO
+    *  [简介](java\NIO\README.md) 
+  * Java并发
+    *  [简介](java\Java并发\README.md) 
+  * Java框架
+    *  [简介](java\Java框架\README.md) 
+  * 数据库
+    *  [简介](java\数据库\README.md) 
+* Go
+  * 基础
+    * [准备知识](go/base/start.md)
+    * [常用集合](go/base/collection.md)
+    * [字符串](go/base/string.md)
+* 前端
+  * [简介](前端/README.md)
+  * [快速开始](前端/基础/start.md)
+
+
+* 读书
+  * 书籍
+    *  	[非暴力沟通](read\书籍\非暴力沟通.md) 
+    *  	[卓尔有效的管理者](read\书籍\卓尔有效的管理者.md) 
+    *   [魔临](read\书籍\魔临.md) 
+    *   [你当像鸟飞往你的山](read\书籍\你当像鸟飞往你的山.md) 
+  * [学习网站](read\学习网站\Readme.md) 
+  * [一些思考](read\一些思考\think.md) 
+  * [有趣的文字](read\有趣的文字\积累.md) 
+* 开源
+  * [skywalking](open_source\skywalking\skywalking.md) 
+* 问题
+  * [搭建博客](problem\blog\blog.md) 
+

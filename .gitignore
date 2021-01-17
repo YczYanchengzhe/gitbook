@@ -57,3 +57,7 @@ fabric.properties
 
 # Editor-based Rest Client
 .idea/httpRequests
+
+
+/docs/_site
+/docs/.jekyll-cache
