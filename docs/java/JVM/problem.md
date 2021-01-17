@@ -7,3 +7,8 @@
 
 1. 工具使用
 2. 常见的gc问题,如何排查
+
+
+
+jstat   -gcutil  https://blog.csdn.net/fenglibing/article/details/6411951
+

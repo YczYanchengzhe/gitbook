@@ -19,6 +19,7 @@
 	* 命令相关
 	  * [Linux命令](cmd\linux.md)
 	  * [Java命令](cmd\java.md)
+	  * [vim命令](cmd\vim.md) 
 * 数据结构
   * [简介](数据结构/README.md)
   * [复杂度分析](数据结构/complexity.md) 

@@ -347,9 +347,35 @@ git merge github/master
 git merge --allow-unrelated-histories github/master
 ```
 
+#### (5) 对于github上面的代码提交marge 已经fork过的代码,想要再次提交需要设置上游依赖 
+```shell
+# 添加上游依赖
+git remote add upstream git@github.com:apache/skywalking.git
+# 查看是否添加成功
+cat .git/config
+```
 
+![up-stream](../resources/git/up-stream.png)
+
+```shell
+# 拉取上游最新变更
+git fetch upstream
+# 确认已经拉取下来
+ git branch -a
+```
+
+![up-stream-2](../resources/git/up-stream-2.png)
+
+```shell
+# 合并提交到远端分支 - 关键是这一步骤,否则的话你的提交会被当成一次pr
+git merge upstream/master
+# 推送提交
+ git push
+# 接下来就可以和远端代码合并啦
+```
 
 ## 12.配置公私钥
+
 >查看手册 : https://docs.github.com/en
 
 ```shell

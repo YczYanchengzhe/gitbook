@@ -48,7 +48,8 @@ dG
 
 awk [选项参数] 'script' var=value file(s) 或 awk [选项参数] -f scriptfile var=value file(s)
 
-常用参数 :   -F fs or --field-separator fs : 指定输入文件折分隔符，fs是一个字符串或者是一个正则表达式，如-F:。 -f scripfile or --file scriptfile : 从脚本文件中读取awk命令。 eg :  # 输出第二列包含 "th"，并打印第二列与第四列 $ awk '$2 ~ /th/ {print $2,$4}' log.txt
+常用参数 :   -F fs or --field-separator fs : 指定输入文件折分隔符，fs是一个字符串或者是一个正则表达式，如-F:。 -f scripfile or --file scriptfile : 从脚本文件中读取awk命令。 
 
+eg :  # 输出第二列包含 "th"，并打印第二列与第四列 $ awk '$2 ~ /th/ {print $2,$4}' log.txt
 
 #### 14.nc - 检测远程 ip 端口是否监听
