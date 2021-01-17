@@ -43,6 +43,9 @@
 * 前端
   * [简介](前端/README.md)
   * [快速开始](前端/基础/start.md)
+  * [版本管理工具使用](前端\vue\npm.md) 
+  * [快速搭建vue项目](前端\vue\start.md) 
+  * [常见问题](前端\vue\problem.md) 
 
 
 * 读书
