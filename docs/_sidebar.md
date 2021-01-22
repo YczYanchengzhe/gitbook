@@ -26,6 +26,7 @@
   * [数组](数据结构/array.md) 
   * [链表](数据结构/linkedList.md) 
 * Java
+  * [Idea](java\开发工具\idea.md)
   * JVM
     *  [简介](java\JVM\README.md) 
   * NIO
