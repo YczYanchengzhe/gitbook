@@ -5,10 +5,6 @@
 
 
 
-目标 : 
-
-学习GC算法 , 常见参数设置 , 调优方案思路,部门分享
-
 
 
 ![JVM](../../resources/java/jvm/JVM.png)
