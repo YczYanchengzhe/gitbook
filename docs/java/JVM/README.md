@@ -11,4 +11,4 @@
 
 
 
-![JVM](../resources/java/jvm/JVM.png)
+![JVM](../../resources/java/jvm/JVM.png)

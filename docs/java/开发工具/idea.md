@@ -6,7 +6,6 @@
 | ----------------- | --------------- | ---------- |
 | GenerateAllSetter | 生成所有set方法 |            |
 | Grep Console      | 日志区分颜色    |            |
-|                   |                 |            |
 
 
 
@@ -16,7 +15,7 @@
 
 # 二.常用功能设置
 
-## 2.代码提示不区分大小写
+## 1.代码提示不区分大小写
 
 file -> setting -> editor -> general -> code completion  : match case
 
