@@ -25,3 +25,10 @@
 #### 2. [OAL 脚本详情](https://github.com/apache/skywalking/blob/master/docs/en/concepts-and-designs/oal.md)
 
 #### 3. [自定义指标](https://github.com/apache/skywalking/blob/8.3.0/docs-hotfix/docs/en/setup/service-agent/java-agent/Application-toolkit-meter.md)
+
+
+
+# 二.相关文档链接
+
+- [原理讲解](https://my.oschina.net/u/4418565/blog/4653959)
+
