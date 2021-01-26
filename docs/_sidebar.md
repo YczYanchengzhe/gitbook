@@ -18,7 +18,6 @@
 	  * [索引](sql/调优/index.md)
 	* 命令相关
 	  * [Linux命令](cmd\linux.md)
-	  * [Java命令](cmd\java.md)
 	  * [vim命令](cmd\vim.md) 
 * 数据结构
   * [简介](数据结构/README.md)
@@ -29,6 +28,10 @@
   * [Idea](java\开发工具\idea.md)
   * JVM
     *  [简介](java\JVM\README.md) 
+    *   [JVM内存结构](java\JVM\internalStorageStructure.md) 
+    *   [JVM相关参数](java\JVM\paramer.md) 
+    *   [JVM命令行工具](java\JVM\cmdline.md) 
+    *   [GC原理](java\JVM\principles.md) 
   * NIO
     *  [简介](java\NIO\README.md) 
   * Java并发

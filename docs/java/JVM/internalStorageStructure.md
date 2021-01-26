@@ -73,15 +73,18 @@ Native 栈 : 本地方法栈,Native 方法不是以 Java 语言实现的，而�
 
 ## 三.JVM堆区结构
 
+![JVM内存结构-堆区](../../resources/java/jvm/JVM内存结构-堆区.png)
+
+- JVM 将堆区分为年轻代和老年代  , 年轻代还划分为三个内存区域,Eden-space(新生代) ,s0 ,s1(存活区)
+
+- 非堆本质上还是堆区,只是一般不归GC管理,主要包括 : mataspace , CCS , Code Cache
+- Metaspace Jdk1.8之前叫持久代/永久代
+- CCS : Compressed Class Space, 存放 class 信息，和 Metaspace 有交叉。
+- Code Cache, 存放 JIT 编译器编译后的本地机器代码。
 
 
 
-
-
-
-
-
-
+# 参考文献
 
 - [1] [Java 内存模型](http://tutorials.jenkov.com/java-concurrency/java-memory-model.html )
 - [2] [Jvm内存结构](https://blog.csdn.net/rongtaoup/article/details/89142396)
