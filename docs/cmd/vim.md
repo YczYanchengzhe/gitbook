@@ -53,6 +53,10 @@ Ctrl + v 进入块选择模式
 
 
 
+vim 复制粘贴操作 , 只能在vim里面进行
+
+https://zhuanlan.zhihu.com/p/51360394
+
 
 
 
@@ -60,4 +64,5 @@ Ctrl + v 进入块选择模式
 # 参考资料
 
 - [1] https://blog.csdn.net/zhongdajiajiao/article/details/52220175# vim 使用
+- [2] https://zhuanlan.zhihu.com/p/51360394 vim 快捷键使用
 
