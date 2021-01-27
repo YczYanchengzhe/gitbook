@@ -23,23 +23,7 @@
 
 #### 10.grep - 在每个文件或标准输入中搜索 (-v 搜索不匹配的)
 
-#### 11.vi - linux下文件编辑
-
-```shell
-# 查看文档格式
-:set ff     
-# 修改文档格式为unix/doc
-:set ff=unix
-```
-```shell
-# 定位首行
-gg
-# 定位尾行
-G
-# 删除全部内容 : (定位首行 + 删除到文件结束)
-gg 
-dG
-```
+#### 11.linux下同时杀死多个进程
 
 
 #### 12.nslookup - 查询DNS的记录，查询域名解析是否正常
@@ -78,23 +62,19 @@ eg :  # 输出第二列包含 "th"，并打印第二列与第四列 $ awk '$2 ~ 
 
 #### 10.grep - 在每个文件或标准输入中搜索 (-v 搜索不匹配的)
 
-#### 11.vi - linux下文件编辑
+#### 11.linux 下杀死多个进程
+```shell
+# 批量杀死进程
+ps -ef  | grep 关键字| grep -v grep | cut -c 5-23 |xargs kill -9
 
-```shell
-# 查看文档格式
-:set ff     
-# 修改文档格式为unix/doc
-:set ff=unix
+# kill 指定信息相关进程 : killall 进程名 
+# 杀死java相关进程
+killall java 
 ```
-```shell
-# 定位首行
-gg
-# 定位尾行
-G
-# 删除全部内容 : (定位首行 + 删除到文件结束)
-gg 
-dG
-```
+
+> `cut -c 5-23` : 是截取输入行的第5个字符到第23个字符，而这正好是进程号PID。
+
+> `xargs kill -9`中的xargs命令是用来把前面命令的输出结果（PID）作为“kill -9”命令的参数，并执行该令。
 
 
 #### 12.nslookup - 查询DNS的记录，查询域名解析是否正常
@@ -105,5 +85,11 @@ awk [选项参数] 'script' var=value file(s) 或 awk [选项参数] -f scriptfi
 
 常用参数 :   -F fs or --field-separator fs : 指定输入文件折分隔符，fs是一个字符串或者是一个正则表达式，如-F:。 -f scripfile or --file scriptfile : 从脚本文件中读取awk命令。 eg :  # 输出第二列包含 "th"，并打印第二列与第四列 $ awk '$2 ~ /th/ {print $2,$4}' log.txt
 
-
 #### 14.nc - 检测远程 ip 端口是否监听
+
+
+
+# 参考资料
+
+- [1] [linux下杀死多个进程](https://blog.csdn.net/lgh1117/article/details/48402285)
+- [2] [菜鸟教程-killall](https://www.runoob.com/linux/linux-comm-killall.html)

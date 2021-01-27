@@ -18,7 +18,6 @@
 	  * [索引](sql/调优/index.md)
 	* 命令相关
 	  * [Linux命令](cmd\linux.md)
-	  * [Java命令](cmd\java.md)
 	  * [vim命令](cmd\vim.md) 
 * 数据结构
   * [简介](数据结构/README.md)
@@ -29,6 +28,10 @@
   * [Idea](java\开发工具\idea.md)
   * JVM
     *  [简介](java\JVM\README.md) 
+    *   [JVM内存结构](java\JVM\internalStorageStructure.md) 
+    *   [JVM相关参数](java\JVM\paramer.md) 
+    *   [JVM命令行工具](java\JVM\cmdline.md) 
+    *   [GC原理](java\JVM\principles.md) 
   * NIO
     *  [简介](java\NIO\README.md) 
   * Java并发
@@ -55,11 +58,12 @@
     *  	[非暴力沟通](read\书籍\非暴力沟通.md) 
     *  	[卓尔有效的管理者](read\书籍\卓尔有效的管理者.md) 
     *   [你当像鸟飞往你的山](read\书籍\你当像鸟飞往你的山.md) 
-    *   [禅与摩托车维修艺术.md](read\书籍\禅与摩托车维修艺术.md) 
+    *   [禅与摩托车维修艺术](read\书籍\禅与摩托车维修艺术.md) 
   * [学习网站](read\学习网站\Readme.md) 
   * [一些思考](read\一些思考\think.md) 
   * [有趣的文字](read\有趣的文字\积累.md) 
 * 开源
+  * [阅读计划](open_source\Readme.md) 
   * [skywalking](open_source\skywalking\skywalking.md) 
 * 问题
   * [搭建博客](problem\blog\blog.md) 
