@@ -17,5 +17,10 @@
 
 ## 1.代码提示不区分大小写
 
+```
 file -> setting -> editor -> general -> code completion  : match case
+```
+
+## 2. idea的断点类型
+
 
