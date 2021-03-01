@@ -26,6 +26,19 @@
 # 二. 相关知识
 自动化测试框架 : Jenknis + testng+ JBehave + serenity+Java
 
+代码覆盖插件 :  Cobertura，JaCoCo，Emma等等
+
+代码覆盖率工具 :  travis , coveralls , codecov
+
+代码质量管理平台 : sonar
+
+代码检查工具 : checkStyle、findbugs、PMD
+
+idea 覆盖率测试 : run test with coverage
+
+Mock相关 :  Mockito ,  easyMock
+
 # 参考资料
 
 - [1] [ JUnit 5 测试 Spring 引擎的时候提示 junit-vintage 错误](https://www.cnblogs.com/huyuchengus/p/13784721.html)
+- [2] [checkStyle、findbugs、PMD各自特点](https://blog.csdn.net/wangqingqi20005/article/details/78266781)

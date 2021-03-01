@@ -107,9 +107,19 @@ Set<Integer> set = new HashSet<Integer>() {{
 }};
 ```
 
+## 3.Guava 工具包
+
+
+## 4. 代码规范
+> 详情见参考资料4-6
 
 
 # 参考资料
 
 - [1] [Java transient关键字使用小记](https://www.cnblogs.com/lanxuezaipiao/p/3369962.html)
 - [2] [Java中的双大括号初始化](https://blog.csdn.net/Yaokai_AssultMaster/article/details/52188735)
+- [3] [guava工具包](http://ifeve.com/google-guava/)
+- [4] [Google 编码规范](https://google.github.io/styleguide/javaguide.html)
+- [5] [Alibaba 编码规范](https://github.com/alibaba/p3cl)
+- [6] [VIP 规范](https://vipshop.github.io/vjtools/#/standard/)
+
