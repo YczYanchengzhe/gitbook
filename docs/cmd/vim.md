@@ -62,6 +62,8 @@ Ctrl + v 进入块选择模式
 
 # 取消注释：
 :起始行号,结束行号s/^注释符//g
+# 全局替换 例 : :%s/QaQ/e/g  把所有的QaQ替换为e
+:%s/源字符串/目的字符串/g
 ```
 
 ### 6. 复制粘贴操作
@@ -91,6 +93,7 @@ p
 
 # 参考资料
 
-- [1] https://blog.csdn.net/zhongdajiajiao/article/details/52220175# vim 使用
-- [2] https://zhuanlan.zhihu.com/p/51360394 vim 快捷键使用
+- [1] [vim 使用](https://blog.csdn.net/zhongdajiajiao/article/details/52220175# )
+- [2] [vim 快捷键使用](https://zhuanlan.zhihu.com/p/51360394)
 
+- [3] [vim批量替换命令实践](https://www.cnblogs.com/beenoisy/p/4046074.html)

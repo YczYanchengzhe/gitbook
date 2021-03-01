@@ -98,7 +98,7 @@ SELECT COUNT(*) as num, role_main, role_assist FROM heros GROUP BY role_main, ro
  **在 SELECT 查询中，关键字的顺序是不能颠倒的，它们的顺序是：** 
 
 ```sql
-SELECT ... FROM ... WHERE ... GROUP BY ... HAVING ... ORDER BY ...
+FROM ... ON ... JOIN ... WHERE ... GROUP BY ... WITH CUBE or WITH ROLLUP ... HAVING ... SELECT ... DISTINCT ... ORDER BY ... TOP ...
 ```
 
 ##### 例子 : 
@@ -111,3 +111,6 @@ select name ,count(*) as num, ROUND(max(hp_max + mp_max),2), ROUND(min(hp_max + 
 
 
 
+# 参考资料
+
+- [1] [join on和where执行顺序](https://blog.csdn.net/bobozai86/article/details/86689054)

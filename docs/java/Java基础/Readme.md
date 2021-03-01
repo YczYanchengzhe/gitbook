@@ -95,15 +95,21 @@ class User2 implements Externalizable {
 - 如果实现了Externalizable ,自己去定义序列化反序列化,那么只会按照自定义的序列化方式来执行.与transient关键字无关.
 
 
-
-
-
-
-
-
+## 2.双大括号初始化
+#### (1) 介绍
+Java的一种语法糖 , 可以使用双大括号进行初始化.实际原理是匿名内部类+实例化代码块
+#### (2) 例子
+```java
+Set<Integer> set = new HashSet<Integer>() {{
+    add(1);
+    add(2);
+    add(3);
+}};
+```
 
 
 
 # 参考资料
 
 - [1] [Java transient关键字使用小记](https://www.cnblogs.com/lanxuezaipiao/p/3369962.html)
+- [2] [Java中的双大括号初始化](https://blog.csdn.net/Yaokai_AssultMaster/article/details/52188735)
