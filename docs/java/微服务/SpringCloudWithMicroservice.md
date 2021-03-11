@@ -123,49 +123,45 @@ Hystric/Alibaba Sentinel : 限流熔断
 **微服务组件的选择 :** 
 https://processon.com/view/5b7d2f1fe4b075b9fe22d3d2
 
+#### (4) APM : 应用性能监控
 
-微服务相关框架和工具 : 
-
-一 . APM : 应用性能监控
-
-Skywalking , Pinpoint , Zipkin , Jaeger
+组件 : Skywalking , Pinpoint , Zipkin , Jaeger
 
 ![img](../../resources/java/微服务/ApmCompare.png)
 
-监控 : ELK , promethus + Grafana
-
+监控 : 
+ELK , promethus + Grafana
 MQ + 时序数据库(InfluxDB/OpenTSDB)
 
-可观测性 : 
-
+可观测性分为三点 : 
 Logging 日志 : elk
-
 Tracing 跟踪 : opentrace , opencensus , openTelemetry
-
 Metrics 指标
 
-二. 权限控制
+#### (5) 权限控制
 
-核心 3A  其他: 资源管理 ,安全加密
-
+核心包含3A, 其他的包含: 资源管理 ,安全加密等
 Authc : Authentication , 检查权限,认证
-
 Authz : Authorization , 授权
-
 Audit : 审计
+
+组件 : SpringSecurity , Apache Shiro : 用户身份认证,安全框架
 
 CAS + SSO (CAS 统一认证中心)
 
-SpringSecurity , Apache Shiro
+#### (6) 数据处理
 
-三. 数据处理
+- 读写分离与高可用HA
+- 分库分表Sharding
+- -分布式事务DTX
+- 数据迁移Migration
+- 数据集群扩容Scaling
+- 数据操作审计Audit：
 
-1、读写分离与高可用HA： 2、分库分表Sharding： 3、分布式事务DTX： 4、数据迁移Migration： 5、数据集群扩容Scaling： 6、数据操作审计Audit：
+#### (7) 网关和通信
 
-四. 网关和通信
+- 流量网关与WAF(Nginx/OR/Kong/Apisix)
 
-\1. 流量网关与WAF(Nginx/OR/Kong/Apisix)
+- 业务网关(Zuul/Zuul2/SCG)
 
-\2. 业务网关(Zuul/Zuul2/SCG)
-
-\3. REST与其他协议(websocket/actor/rsocket/mq...)
+- REST与其他协议(websocket/actor/rsocket/mq...)
