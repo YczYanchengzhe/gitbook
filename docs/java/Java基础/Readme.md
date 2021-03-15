@@ -113,6 +113,30 @@ Set<Integer> set = new HashSet<Integer>() {{
 ## 4. 代码规范
 > 详情见参考资料4-6
 
+## 5. 未关闭流引起的资源泄露
+https://droidyue.com/blog/2019/06/09/will-unclosed-stream-objects-cause-memory-leaks/
+
+
+## 6.jdk 1.8 的时间处理
+https://www.jianshu.com/p/2949db9c3df5
+
+## 7.动态代理
+https://blog.csdn.net/fanrenxiang/article/details/81939357
+
+## 8.jdk1.8 流处理
+https://blog.csdn.net/l18848956739/article/details/86504409
+
+## 9. java 自动装箱 ,拆箱引起的**不明确问题
+https://www.codenong.com/22234497/
+
+## 10. 断点续传
+https://www.cnblogs.com/phpstudy2015-6/p/6821478.html#_label5
+https://www.jianshu.com/p/2b82db0a5181
+
+
+
+
+
 
 # 参考资料
 

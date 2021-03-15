@@ -91,4 +91,14 @@ show create table columns; # 查看表sql语句
 create schema test;
 
 
+#### 23. ClicnkHouse
+ClicnkHouse  :  https://clickhouse.tech/docs/zh/#cpu
+数据库管理系统 , 在OLAP领域受到业内青睐
+优点 : 
+完备的DBMS功能 , 关系模型与SQL查询 , 基于 副本+分片 ,实现线性和高可靠 , 列式存储 , 表引擎 , 向量化引擎(单指令操作多条数据,在cpu层面操作多条数据)
+缺点 : 不支持事务
+
+
+
+
 # 参考资料

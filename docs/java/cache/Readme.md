@@ -130,3 +130,10 @@ Memcached 官网：https://memcached.org/
 4. 实现熔断限流,控制负载
 
 
+# 其他知识 : 
+## 1. guava 和 ehcache
+https://blog.csdn.net/lusteiger/article/details/84850433
+
+## 2. Redis 缓存更新一致性
+https://www.cnblogs.com/Finley/p/12615111.html
+
