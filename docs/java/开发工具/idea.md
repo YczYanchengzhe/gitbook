@@ -9,10 +9,6 @@
 
 
 
-
-
-
-
 # 二.常用功能设置
 
 ## 1.代码提示不区分大小写
@@ -45,3 +41,6 @@ file -> setting -> editor -> general -> code completion  : match case
 ## 5. 常用快捷键
 - 整行移动：Option + Shift + ↑/↓ ， CTRL+ alt + ↑/↓
 
+
+# 三.官方文档地址
+[w3c文档](https://www.w3cschool.cn/intellij_idea_doc/intellij_idea_doc-p5nq2dle.html)
