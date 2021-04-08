@@ -87,9 +87,121 @@ awk [选项参数] 'script' var=value file(s) 或 awk [选项参数] -f scriptfi
 
 #### 14.nc - 检测远程 ip 端口是否监听
 
+#### 15. iostat
+
+```
+-C 显示CPU使用情况
+-d 显示磁盘使用情况
+-k 以 KB 为单位显示
+-m 以 M 为单位显示
+-N 显示磁盘阵列(LVM) 信息
+-n 显示NFS 使用情况
+-p[磁盘] 显示磁盘和分区的情况
+-t 显示终端和CPU的信息
+-x 显示详细信息
+-V 显示版本信息
+```
+
+```shell
+# 常规用法
+iostat -d -k 1 10         #查看TPS和吞吐量信息
+iostat -d -x -k 1 10      #查看设备使用率（%util）、响应时间（await）
+iostat -c 1 10            #查看cpu状态
+```
+
+
+
+##### (1) 基本使用
+
+```shell
+# -d 表示，显示设备（磁盘）使用状态；
+# -k某些使用block为单位的列强制使用Kilobytes为单位；
+# 1 10表示，数据显示每隔1秒刷新一次，共显示10次。
+iostat -d -k 1 10
+```
+
+![1617900494263](../../resources/cmd/linux/iostat_1.png)
+
+含义说明 : 
+
+```
+tps：该设备每秒的传输次数。“一次传输”意思是“一次I/O请求”。多个逻辑请求可能会被合并为“一次I/O请求”。“一次传输”请求的大小是未知的。
+
+kB_read/s：每秒从设备（drive expressed）读取的数据量；
+kB_wrtn/s：每秒向设备（drive expressed）写入的数据量；
+
+kB_read：读取的总数据量；
+kB_wrtn：写入的总数量数据量；
+
+这些单位都为Kilobytes。
+```
+
+##### (2) -x 参数
+
+```shell
+# -x 获得更多统计信息
+iostat -d -x -k 1 10
+```
+
+![1617900694341](../../resources/cmd/linux/iostat_2.png)
+
+含义说明 : 
+
+```
+rrqm/s:每秒进行 merge 的读操作数目.即 delta(rmerge)/s（当系统调用需要读取数据的时候，VFS将请求发到各个FS，如果FS发现不同的读取请求读取的是相同Block的数据，FS会将这个请求合并Merge）
+wrqm/s:每秒进行 merge 的写操作数目.即 delta(wmerge)/s
+
+r/s:每秒完成的读 I/O 设备次数.即 delta(rio)/s
+w/s:每秒完成的写 I/O 设备次数.即 delta(wio)/s
+
+rsec/s:每秒读扇区数.即 delta(rsect)/s
+wsec/s:每秒写扇区数.即 delta(wsect)/s
+
+rkB/s:每秒读K字节数.是 rsect/s 的一半,因为每扇区大小为512字节.(需要计算)
+wkB/s:每秒写K字节数.是 wsect/s 的一半.(需要计算)
+
+avgrq-sz: 平均每次设备I/O操作的数据大小 (扇区).delta(rsect+wsect)/delta(rio+wio)
+avgqu-sz: 平均I/O队列长度.即 delta(aveq)/s/1000 (因为aveq的单位为毫秒).
+
+await:平均每次设备I/O操作的等待时间 (毫秒).即 delta(ruse+wuse)/delta(rio+wio)
+
+svctm:平均每次设备I/O操作的服务时间 (毫秒).即 delta(use)/delta(rio+wio)
+
+%util:一秒中有百分之多少的时间用于 I/O 操作,或者说一秒中有多少时间 I/O 队列是非空的.即 delta(use)/s/1000 (因为use的单位为毫秒)
+```
+
+
+
+##### （3）-c参数
+
+```shell
+# cpu相关信息
+iostat -c 1 10
+```
+
+![1617901210884](../../resources/cmd/linux/1617901210884.png)
+
+```
+%user：CPU处在用户模式下的时间百分比
+
+%nice：CPU处在带NICE值的用户模式下的时间百分比
+
+%system：CPU处在系统模式下的时间百分比
+
+%iowait：CPU等待输入输出完成时间的百分比
+
+%steal：管理程序维护另一个虚拟处理器时，虚拟CPU的无意识等待时间百分比
+
+%idle：CPU空闲时间百分比 
+```
+
+
+
 
 
 # 参考资料
 
 - [1] [linux下杀死多个进程](https://blog.csdn.net/lgh1117/article/details/48402285)
 - [2] [菜鸟教程-killall](https://www.runoob.com/linux/linux-comm-killall.html)
+- [3] [Linux下使用iostat 监视I/O状态](https://www.cnblogs.com/chenpingzhao/p/5115063.html)
+- [4] [Linux iostat监测IO状态](https://www.orczhou.com/index.php/2010/03/iostat-detail/)

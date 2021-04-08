@@ -17,7 +17,7 @@
 	  * [数据库相关知识](sql/基础/sql-about.md)
 	  * [索引](sql/调优/index.md)
 	* 命令相关
-	  * [Linux命令](cmd\linux.md)
+	  * [Linux命令](cmd\linux\linux.md)
 	  * [vim命令](cmd\vim.md) 
 * 数据结构
   * [简介](数据结构/README.md)
