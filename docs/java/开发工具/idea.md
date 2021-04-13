@@ -40,6 +40,8 @@ file -> setting -> editor -> general -> code completion  : match case
 
 ## 5. 常用快捷键
 - 整行移动：Option + Shift + ↑/↓ ， CTRL+ alt + ↑/↓
+- 重复打印前一个单词 ： option + / 	
+- [idea-mac触摸板缩放字体](mac idea 触控板 缩放 字体大小)
 
 
 # 三.官方文档地址

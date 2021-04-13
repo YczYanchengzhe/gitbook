@@ -40,6 +40,10 @@
     *  [简介](java\Java框架\README.md) 
   * 数据库
     *  [简介](java\数据库\README.md) 
+  * 缓存
+    *  [简介](java\cache\Readme.md) 
+  * ETCD
+    *  [简介](java\etcd\etcd.md) 
 * Go
   * 基础
     * [准备知识](go/base/start.md)
@@ -62,6 +66,8 @@
   * [学习网站](read\学习网站\Readme.md) 
   * [一些思考](read\一些思考\think.md) 
   * [有趣的文字](read\有趣的文字\积累.md) 
+* 项目管理
+  *  [简介](project_management\Readme.md) 
 * 开源
   * [阅读计划](open_source\Readme.md) 
   * [skywalking](open_source\skywalking\skywalking.md) 
