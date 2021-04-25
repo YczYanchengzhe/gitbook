@@ -5,6 +5,15 @@
 #### 2.ps - 查看进行相关信息
 
 #### 3.netstat - 检验本机各端口的网络连接情况
+```shell
+netstat -tunlp | grep 端口号
+#-t (tcp) 仅显示tcp相关选项
+#-u (udp)仅显示udp相关选项
+#-n 拒绝显示别名，能显示数字的全部转化为数字
+#-l 仅列出在Listen(监听)的服务状态
+#-p 显示建立相关链接的程序名
+```
+
 
 #### 4.zip unzip  tar 打包相关命令
 
@@ -191,6 +200,47 @@ uniq [-cdu][-f<栏位>][-s<字符位置>][-w<字符位置>][--help][--version][�
 # 先排序,在去重 ,在统计数量
 sort  test | uniq | wc -l
 ```
+
+#### 17.lsof - 列出当前系统打开文件的工具
+常用命令 : 
+```shell
+# 查看8080端口占用
+lsof -i:8080
+# 显示开启文件abc.txt的进程
+lsof abc.txt
+# 显示abc进程现在打开的文件
+lsof -c abc
+# 列出进程号为1234的进程所打开的文件
+lsof -p 1234
+# 显示归属gid的进程情况
+lsof -g gid
+# 显示目录下被进程开启的文件
+lsof +d /usr/local/
+# 同上，但是会搜索目录下的目录，时间较长
+lsof +D /usr/local/
+# 显示使用fd为4的进程
+lsof -d 4
+# 显示所有打开的端口和UNIX domain文件
+lsof -i -U
+```
+
+输出信息含义 : 
+
+```
+COMMAND:进程名称
+PID:进程号
+USER:进程所有者
+FD:文件描述符
+TYPE:文件类型
+DEVICE:指定磁盘名称
+SIZE:文件大小
+NODE:索引节点
+NAME:打开文件的确切名称
+```
+
+![1619365866255](../../resources/cmd/linux/lsof.png)
+
+
 
 
 # 参考资料

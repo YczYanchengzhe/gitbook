@@ -14,3 +14,15 @@
 问题解决 : 采用双缓存策略,读写缓存拆分.
 当有数据上报时候,这部分数据是需要定时写入数据库的,将这部分数据加入到写缓存中,设置过期时间.
 当访问时候,会访问读缓存,读缓存未命中时候在数据库中拉取数据,该缓存数据不会写入数据库.
+
+
+
+## 3. GC相关问题
+gc 时间
+https://cloud.tencent.com/developer/article/1491229
+https://blog.csdn.net/varyall/article/details/80044132
+
+1. 线上机器出现线程不执行情况
+2. 查看gc日志，发现出现gc分配内存不足，导致stop the world
+
+![img](../../resources/problem/online/jvm_1.png)

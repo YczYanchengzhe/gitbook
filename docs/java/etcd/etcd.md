@@ -112,3 +112,9 @@ nohup ./etcd --name etcd3 --initial-advertise-peer-urls http://172.29.200.108:23
 ./etcdctl --username root:rootpwd role grant guest --path '/*' --rw
 # 回收权限之后 ， 默认的无用户名密码的情况下就无法访问了
 ```
+
+
+
+## 五.待整理
+https://alexstocks.github.io/html/etcd.html
+https://www.cnblogs.com/laoqing/p/8967549.html
