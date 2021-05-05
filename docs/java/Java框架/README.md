@@ -12,3 +12,15 @@ https://blog.csdn.net/qq32933432/article/details/89375630
 springboot+excel 整理
 
 https://www.jianshu.com/p/5d67fb720ece
+
+
+
+mac MacOSDnsServerAddressStreamProvider 问题
+
+https://www.lingjie.tech/article/2021-01-31/29
+
+
+
+springboot 自定义加载资源
+
+https://my.oschina.net/goodyj/blog/1824336
