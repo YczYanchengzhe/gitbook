@@ -1,4 +1,4 @@
-# 开源协议以及Skywalking概述
+# 开源协议
 ## 一.监控指标概述
 
 下面选自 Peter Bourgon 的Blog
@@ -116,11 +116,6 @@ SpanContexts可以通过**Injected**操作向**Carrier**增加，或者通过**E
 
 每一个平台的OpenTracing API库必须提供一个no-op Tracer（不具有任何操作的tracer）作为接口的一部分。No-op Tracer的实现必须不会出错，并且不会有任何副作用，包括baggage的传递时，也不会出现任何问题。同样，Tracer的实现也必须提供no-op Span实现；
 通过这种方法，监控代码不依赖于Tracer关于Span的返回值，针对no-op实现，不需要修改任何源代码。No-op Tracer的Inject方法永远返回成功，Extract返回的效果，和"carrier"中没有找到SpanContext时返回的结果一样。
-
-
-
-## 三. Skywalking架构
-
 
 
 ### 参考文献 : 

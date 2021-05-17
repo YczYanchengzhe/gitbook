@@ -135,7 +135,15 @@ https://www.jianshu.com/p/2b82db0a5181
 
 
 
+## 11. final return 执行顺序
+#### 从运行时的堆栈关系来解释try-catch 原理
+https://blog.csdn.net/roholi/article/details/7358265
 
+## 12. List<Object> , List<? extend Object>
+
+https://blog.csdn.net/qq_32117641/article/details/88692100?utm_medium=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control&depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-1.control
+
+https://blog.csdn.net/qq_37964379/article/details/88528997
 
 
 # 参考资料
