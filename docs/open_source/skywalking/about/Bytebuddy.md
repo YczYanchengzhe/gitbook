@@ -1,9 +1,9 @@
 ## Bytebuddy - 字节码增强神器
 
-在介绍Bytebuddy之前我们先了解一下Java中的AOP.
+在介绍Bytebuddy之前我们先了解一下AOP.
 
 # 一. AOP 介绍
-
+AOP是Aspect Oriented Programming，即面向切面编程。
 # 二. Java实现AOP的方式
 ## 1. 实现方式概览
 - 静态AOP : 静态织入
@@ -12,13 +12,16 @@
 
 ### (1) 静态织入 : AspectJ生成静态代理
 
+
 ### (2) 动态代理 : java proxy
 
 ### (3) 动态字节码生成 :cglib 
 
 ### (4) 自定义类加载器 : classloader
 
-### (5) 字节码转换 : java agent , java assist
+### (5) 字节码转换 : java assist
+
+### (6) JavaAgent 方式 : ByteBuddy
 
 ## 3. 几种方式的比较
 
