@@ -43,6 +43,22 @@ file -> setting -> editor -> general -> code completion  : match case
 - 重复打印前一个单词 ： option + / 	
 - [idea-mac触摸板缩放字体](mac idea 触控板 缩放 字体大小)
 
+## 6. idea 安装 puml
+#### 安装步骤
+```shell
+# mac使用下面的下载 windows可自行搜索下载
+brew list graphviz
+# mac下载路径示例,找到  graphviz 的bin文件夹中的dot文件
+/opt/homebrew/Cellar/graphviz/2.46.1/bin
+# 进行idea的配置
+idea -> setting -> plantuml -> 配置 dot 路径
+```
+#### 可能出现的问题
+(1) mac下载`graphviz`, 如果出现下图提示错误,可能是网络问题,重新安装即可
+```log
+curl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to d29vzk4ow07wi7.cloudfront.net:443
+Error: Failed to download resource "libtiff"
+```
 
 # 三.官方文档地址
 [w3c文档](https://www.w3cschool.cn/intellij_idea_doc/intellij_idea_doc-p5nq2dle.html)
