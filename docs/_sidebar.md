@@ -16,6 +16,9 @@
 	  * [子查询与连接](sql/基础/sub-queries.md) 
 	  * [数据库相关知识](sql/基础/sql-about.md)
 	  * [索引](sql/调优/index.md)
+	  *  [如何通过索引让SQL执行更高效](sql/调优/index_sql.md) 
+		*  [数据库中的存储结构是怎样的](sql/调优/save_sql.md) 
+		*  [从磁盘I/O的角度理解SQL查询的成本](sql/调优/io_sql.md) 
 	* 命令相关
 	  * [Linux命令](cmd\linux\linux.md)
 	  * [vim命令](cmd\vim.md) 
