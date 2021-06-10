@@ -38,7 +38,12 @@ idea 覆盖率测试 : run test with coverage
 
 Mock相关 :  Mockito ,  easyMock
 
+**jdk 11 远程debug 需要指定ip**
+
+> -agentlib:jdwp=transport=dt_socket,address=*:8787,server=y,suspend=n
+
 # 参考资料
 
 - [1] [ JUnit 5 测试 Spring 引擎的时候提示 junit-vintage 错误](https://www.cnblogs.com/huyuchengus/p/13784721.html)
 - [2] [checkStyle、findbugs、PMD各自特点](https://blog.csdn.net/wangqingqi20005/article/details/78266781)
+- [3] [No connection to Wildfly 14 on OpenJDK 11 at port 8787](https://www.coder.work/article/399250)
