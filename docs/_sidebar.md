@@ -22,6 +22,7 @@
       *  [数据库中的存储结构是怎样的](sql/调优/save_sql.md) 
       *  [从磁盘I/O的角度理解SQL查询的成本](sql/调优/io_sql.md) 
       *  [乐观锁和悲观锁](sql/调优/lock.md) 
+	    *  [RDBMS中的MVCC ](sql/调优/mvcc.md) 
 	* 命令相关
 	  * [Linux命令](cmd\linux\linux.md)
 	  * [vim命令](cmd\vim.md) 
