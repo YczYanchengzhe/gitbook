@@ -17,6 +17,7 @@
 *  [从磁盘I/O的角度理解SQL查询的成本](调优/io_sql.md) 
 *  [乐观锁和悲观锁](调优/lock.md) 
 *  [RDBMS中的MVCC ](调优/mvcc.md) 
+*   [查询优化器](调优\optimize.md) 
 
 
 
