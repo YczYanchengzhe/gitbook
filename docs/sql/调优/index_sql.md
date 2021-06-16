@@ -39,6 +39,9 @@
  - 参考[官方解释](https://dev.mysql.com/doc/refman/8.0/en/data-size.html )  : It makes SQL operations faster, by enabling better use of indexes and eliminating overhead for testing whether each value is NULL.
 6. **使用联合索引的时候要注意最左原则**
 
+- SQL 条件语句中的字段顺序并不重要，因为在逻辑查询优化阶段会自动进行查询重写。
+- 如果我们遇到了范围条件查询，比如（<）（<=）（>）（>=）和 between 等，那么范围列后的列就无法使用到索引了
+
 # 三. 为什么没有理想的索引
 
 ## 1. 索引片和过滤因子
