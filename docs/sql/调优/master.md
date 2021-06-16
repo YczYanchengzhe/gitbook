@@ -45,25 +45,47 @@ rpl_semi_sync_master_wait_for_slave_count
 
 
 
+# 数据恢复
 
+# 一. InnoDB存储引擎的表空间
 
+> InnoDB 存储引擎的文件格式是.ibd 文件，数据会按照表空间（tablespace）进行存储，分为共享表空间和独立表空间。
 
+```sql
+-- 查询 : ON 表示独立表空间，而 OFF 则表示共享表空间
+show variables like 'innodb_file_per_table';
+```
 
+- 共享表空间 : InnoDB 存储的表数据都会放到共享表空间中，也就是多个数据表共用一个表空间，同时表空间也会自动分成多个文件存放到磁盘上.
+  - 单个数据表的大小可以突破文件系统大小的限制，最大可以达到 64TB
+  - 多个数据表存放到一起，结构不清晰，不利于数据的找回
+- 独立表空间 : 每个数据表都有自己的物理文件
+  - 每张表都相互独立，不会影响到其他数据表，存储结构清晰，利于数据恢复
+  - 数据表还可以在不同的数据库之间进行迁移
 
+# 二. ibd文件损害如何找回
 
+- mysqlbinlog,binlog2sql - 根据binlog恢复
+- Percona Data Recovery Tool for InnoDB - 根据ibd文件进行回复
 
+### InnoDB自动恢复机制
 
+```sql
+-- 默认为 0，表示不进行强制恢复,如果ibd 文件中的数据页发生损坏，则无法读取数据
+show variables like 'innodb_force_recovery';
+```
 
+- innodb_force_recovery参数一共有 7 种状态，除了默认的 0 以外，还可以为 1-6 的取值，分别代表不同的强制恢复措施。
+- 当我们需要强制恢复的时候，可以将innodb_force_recovery设置为 1，表示即使发现了损坏页也可以继续让服务运行，这样我们就可以读取数据表，并且对当前损坏的数据表进行分析和备份。
+- 通常innodb_force_recovery参数设置为 1，只要能正常读取数据表即可。但如果参数设置为 1 之后还无法读取数据表，我们可以将参数逐一增加，比如 2、3 等
+- 当innodb_force_recovery设置为大于 0 时，相当于对 InnoDB 进行了写保护，只能进行 SELECT 读取操作，还是有限制的读取，对于 WHERE 条件以及 ORDER BY 都无法进行操作。
 
+### InnoDB自动恢复流程
 
-
-
-
-
-
-
-
-
+- 使用innodb_force_recovery启动服务器
+- 备份数据表 : 这里需要使用 MyISAM 存储引擎,因为InnoDB 存储引擎已经写保护了，无法将数据备份出来
+- 删除旧表，改名新表
+- 关闭innodb_force_recovery，并重启数据库
 
 
 
