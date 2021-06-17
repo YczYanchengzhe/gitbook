@@ -241,7 +241,12 @@ NAME:打开文件的确切名称
 ![1619365866255](../../resources/cmd/linux/lsof.png)
 
 
+#### 18.top 
 
+ - 查看某个进程的线程资源占用情况
+```shell
+top -Hp <pid>
+```
 
 # 参考资料
 
