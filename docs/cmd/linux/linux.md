@@ -245,6 +245,8 @@ lsof +D /usr/local/
 lsof -d 4
 # 显示所有打开的端口和UNIX domain文件
 lsof -i -U
+# 查看某一个端口(8080)的占用情况
+lsof -i tcp:8080
 ```
 
 输出信息含义 : 

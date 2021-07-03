@@ -152,6 +152,58 @@ https://codesearch.aixcoder.com/#/
 ## 14. 原子类
 https://blog.csdn.net/weixin_38003389/article/details/88569336
 
+## 15. String
+StringBuilder 相较于 StringBuffer 有速度优势 在应用程序要求线程安全的情况下，必须使用 StringBuffer
+
+## 16. Maven 包的版本号概念
+> 版本号通常以数字形式呈现，因为数字信息通俗易懂（格式：主版本号+次版本+（修正版本号build-可选）+（编译版本号-可选）+英文常见号）
+
+
+
+#### 16.1 Alpha、Beta、Gamma版本
+
+- Alpha：内测版，BUG多，开发人员开发过程中使用，希腊字母α，第一，指最初版
+- Beta：早期版本，有缺陷，无大BUG，可能加入新功能，进一步开发完善。
+- Gamma: 经Beta版，完善修改，成为正式发布的候选版本（Release Candidate）
+
+#### 16.2 RC、GA、R版本
+
+- RC：(Release Candidate)：候选版本，几乎就是正式版了。
+- GA：（General Availability）：发行稳定版，官方推荐使用此版本。
+- R，RELEASE：正式版，等价于GA。
+
+#### 16.3 SNAPSHOT版本
+
+SNAPSHOT：快照版，可以稳定使用，且仍在继续改进版本。
+
+#### 16.4 其他版本关键字的含义
+
+- Alpha：内部测试版
+- Beta：外部测试版
+- Build：修正版
+- Corporation或Enterprise：企业版
+- Delux：豪华版
+- DEMO：演示版，有功能限制
+- Free：免费版
+- Full：完全版
+- Final：正式版
+- Pro(professional)：专业版
+- Plus：加强版
+- Retail：零售版
+- Release：发行版，有时间限制
+- Shareware：共享版，虽然不会要求注册但是一般也有功能限制
+- SR：修正版
+- Trial：试用版（一般有时间或者功能限制）
+
+
+
+
+
+
+
+
+
+
 # 参考资料
 
 - [1] [Java transient关键字使用小记](https://www.cnblogs.com/lanxuezaipiao/p/3369962.html)
@@ -160,4 +212,5 @@ https://blog.csdn.net/weixin_38003389/article/details/88569336
 - [4] [Google 编码规范](https://google.github.io/styleguide/javaguide.html)
 - [5] [Alibaba 编码规范](https://github.com/alibaba/p3cl)
 - [6] [VIP 规范](https://vipshop.github.io/vjtools/#/standard/)
+- [7] [版本号的意义](https://blog.csdn.net/loongshawn/article/details/90310974)
 
