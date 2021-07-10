@@ -11,7 +11,7 @@ npm  list
 npm run serve 
 # 安装插件等
 npm i
-# 切换node版本
+# 切换node版本 : nvm 需要依赖gcc
 nvm use 8.11.4
 # 安装某一版本
 nvm install 8.11.4

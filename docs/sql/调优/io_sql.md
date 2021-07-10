@@ -35,6 +35,18 @@ show variables like 'innodb_buffer_pool_instances';
 >
 > 这里需要说明的是，如果想要开启多个缓冲池，你首先需要将innodb_buffer_pool_size参数设置为大于等于 1GB，这时innodb_buffer_pool_instances才会大于 1。你可以在 MySQL 的配置文件中对innodb_buffer_pool_size进行设置，大于等于 1GB，然后再针对innodb_buffer_pool_instances参数进行修改。
 
+#### 5. InnoDB 的缓冲池
+
+![img](../../resources/sql/0eb57c0d0ea7611b16ac6efa76771bdc.png)
+
+#### (1) 频次 * 位置
+“频次 * 位置”这个原则，可以帮我们对 I/O 访问效率进行优化;
+
+- 位置决定效率，提供缓冲池就是为了在内存中可以直接访问数据。
+- 频次决定优先级顺序。
+- 预读 : 进行读取数据的时候存在一个“局部性原理”,使用了一些数据，大概率还会使用它周围的一些数据,采用“预读”的机制提前加载，可以减少未来可能的磁盘 I/O 操作。
+
+
 
 ## 二.数据页加载的三种方式
 如果缓冲池中没有该页数据，那么缓冲池有以下三种读取数据的方式，每种方式的读取效率都是不同的：

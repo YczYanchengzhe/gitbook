@@ -63,6 +63,6 @@ JavaScript 中的 Number 类型有  2^64-2^53+3个值。
 普通对象（Ordinary Objects）：由{}语法、Object 构造器或者 class 关键字定义类创建的对象，它能够被原型继承。
 
 
-npm 换源
+[为什么我们放弃了 Vue？Vue 和 React 深度对比](http://blog.itpub.net/69981092/viewspace-2710742/)
 
-https://www.jianshu.com/p/f311a3a155ff
+[npm 换源](https://www.jianshu.com/p/f311a3a155ff)

@@ -100,5 +100,9 @@ ClicnkHouse  :  https://clickhouse.tech/docs/zh/#cpu
 
 
 
+#### 24. MySQL启动报：[ERROR] The server quit without updating PID file
+
+https://blog.csdn.net/ydyang1126/article/details/72473828
+
 
 # 参考资料
