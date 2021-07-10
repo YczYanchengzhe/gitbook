@@ -14,8 +14,13 @@
 #### 3. 双重检查锁
 
 #### 4. ForkJoinPool
-https://zhuanlan.zhihu.com/p/90958193
-s
+
+[参考文献](https://zhuanlan.zhihu.com/p/90958193)
+
+
+
+
+
 
 # 参考资料
 - [1] [从ReentrantLock的实现看AQS的原理及应用](https://tech.meituan.com/2019/12/05/aqs-theory-and-apply.html)
