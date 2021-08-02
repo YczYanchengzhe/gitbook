@@ -45,8 +45,10 @@ jps -mlv # 查看进程详情
 ```shell
 # eap 打印堆内存（/内存池）的配置和使用信息。
 jmap -heap pid
-# isto 看哪些类占用的空间最多, 直方图
+# histo 看哪些类占用的空间最多, 直方图
 jmap -histo pid
+# histo 某个进程 看哪些类占用的空间最多, 前20
+jmap -histo:live <pid> | head -20
 # ump:format=b,file=xxxx.hprof Dump 堆内存。
 jmap -dump:format=b,file=3826.hprof 3826
 ```
