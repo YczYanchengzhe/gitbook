@@ -110,7 +110,9 @@ Set<Integer> set = new HashSet<Integer>() {{
 #### (3) 注意
 双括号初始化生成的对象对应的实体类不是原来的实体类,因为实现上实际上通过子类的方式实现的.
 
-## 3.Guava 工具包
+## 3.自定义迭代器
+
+implements Iterable
 
 
 ## 4. 代码规范
@@ -152,8 +154,7 @@ https://blog.csdn.net/qq_37964379/article/details/88528997
 
 https://codesearch.aixcoder.com/#/
 
-## 14. 原子类
-https://blog.csdn.net/weixin_38003389/article/details/88569336
+## 14. - 
 
 ## 15. String
 StringBuilder 相较于 StringBuffer 有速度优势 在应用程序要求线程安全的情况下，必须使用 StringBuffer
@@ -197,18 +198,6 @@ SNAPSHOT：快照版，可以稳定使用，且仍在继续改进版本。
 - Shareware：共享版，虽然不会要求注册但是一般也有功能限制
 - SR：修正版
 - Trial：试用版（一般有时间或者功能限制）
-
-
-
-#### 17. 自定义迭代器
-
-implements Iterable
-
-
-
-
-
-
 
 
 
