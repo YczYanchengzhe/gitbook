@@ -21,6 +21,9 @@
 
 https://pdai.tech/md/java/thread/java-thread-x-lock-AbstractQueuedSynchronizer.html
 
+#### 6. 关于多线程中抛异常的这个面试题我再说最后一次！
+https://mp.weixin.qq.com/s/aOlScg5sfQ4JvHzcRFqeyQ
+
 
 
 

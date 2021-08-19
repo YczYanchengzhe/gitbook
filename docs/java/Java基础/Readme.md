@@ -1,7 +1,5 @@
 # Java 基础
 
-
-
 # 一. 有趣的知识
 
 ## 1.transient 

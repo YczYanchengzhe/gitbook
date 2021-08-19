@@ -770,14 +770,16 @@ LongAdder 的改进思路：
 
 
 
-# # 六.并发工具类 TODO 
+#  六.并发工具类
 
-```
-场景 : 
+## 6.1 场景 : 
+**多个线程之间怎么协作 ? Object/notify , Lock/Condition 这些只是简单地协作.**
+
 - 我们需要控制实际并发访问资源的并发数量
 - 我们需要多个线程在某个时间同时开始运行
 - 我们需要指定数量线程到达某个状态再继续处理
-```
+
+## 6.2 AQS : 队列同步器
 
 **AQS** : AbstractQueuedSynchronizer，即队列同步器。它是构建锁或者其他同步组件的基础（如Semaphore、CountDownLatch、ReentrantLock、ReentrantReadWriteLock)是JUC并发包中的核心基础组件。
 
@@ -785,6 +787,7 @@ LongAdder 的改进思路：
 
 - 两种资源共享方式: 独占 | 共享，子类负责实现公平 OR 非公平
 
+## 6.3 工具类介绍
 **Semaphore -** **信号量**
 
 ```
@@ -820,193 +823,116 @@ void reset() 重新一轮
 
 **CountDownLatch** **与** **CyclicBarrier** **比较**
 
+| 比较               | CountDownLatch                                               | CyclicBarrier                                                |
+| ------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| 计数方式           | 减计数方式                                                   | 加计数方式                                                   |
+| 释放条件           | 计算为0时释放所有的等待线程                                  | 计数达到指定值时释放所有等待线程                             |
+| 是否可重置以及复用 | 计数为0时,无法重置,不可重复利用                              | 计数达到指定值时,计数置为0重新开始,可重复利用                |
+| await()操作的区别  | 调用countDown()方法计数器减1,调用await()方法只进行阻塞,对计数没有影响 | 调用await方法计数加1,若加1后的值不等于构造方法的值,那么线程阻塞. |
 
-![image-20210803094718427](../../resources/java/java_concurrency/image-20210803094718427.png)
 
-**Future/FutureTask/CompletableFuture**
+## 6.4 Future/FutureTask/CompletableFuture
+
+
 
 ![image-20210803094757886](../../resources/java/java_concurrency/image-20210803094757886.png)
 
 **CompletableFuture**
 
-```
-static final boolean useCommonPool =
-(ForkJoinPool.getCommonPoolParallelism() > 1);
-是否使用内置线程池
-static final Executor asyncPool = useCommonPool ?
-ForkJoinPool.commonPool() : new ThreadPerTaskExecutor();
-线程池
-CompletableFuture<Void> runAsync(Runnable runnable)； 异步执行【当心阻塞？】
-CompletableFuture<Void> runAsync(Runnable runnable, Executor 
-executor)
-异步执行, 使用自定义线程池
-T get() 等待执行结果
-T get(long timeout, TimeUnit unit) 限时等待执行结果
-T getNow(T valueIfAbsent) 立即获取结果(默认值)
-```
+| 方法                                                         | 说明                       |
+| ------------------------------------------------------------ | -------------------------- |
+| static final boolean USE_COMMON_POOL =(ForkJoinPool.getCommonPoolParallelism() > 1); | 是否使用内置线程池         |
+| static final Executor ASYNC_POOL = USE_COMMON_POOL ?ForkJoinPool.commonPool() : new ThreadPerTaskExecutor(); | 线程池                     |
+| CompletableFuture\<Void> runAsync(Runnable runnable)；       | 异步执行                   |
+| CompletableFuture<Void> runAsync(Runnable runnable, Executor <br/>executor) | 异步执行, 使用自定义线程池 |
+| T get()                                                      | 等待执行结果               |
+| T get(long timeout, TimeUnit unit)                           | 限时等待执行结果           |
+| T getNow(T valueIfAbsent)                                    | 立即获取结果(默认值)       |
 
+# 七.常用线程安全类型
 
-
-
-
-
-
-
-
-# 常用线程安全类型
-
-**List**：ArrayList、LinkedList、Vector、Stack
+## 7.1 List : ArrayList、LinkedList、Vector、Stack
 
 **ArrayList :** 
 
-基本特点：基于数组，便于按 index 访问，超过数组需要扩容，扩容成本较高
+- 基本特点：基于数组，便于按 index 访问，超过数组需要扩容，扩容成本较高
 
-用途：大部分情况下操作一组数据都可以用 ArrayList
+- 用途：大部分情况下操作一组数据都可以用 ArrayList
 
-原理：使用数组模拟列表，默认大小10，扩容 x1.5，newCapacity = oldCapacity + (oldCapacity >> 1)
+- 原理：使用数组模拟列表，默认大小10，扩容 x1.5，newCapacity = oldCapacity + (oldCapacity >> 1)
+
+- 安全问题：
+  - 写冲突 : 两个写，相互操作冲突
+  - 读写冲突：读，特别是 iterator 的时候，数据个数变了，拿到了非预期数据或者报错产生ConcurrentModificationException
 
 
+> List 线程安全的简单办法 : 
+>
+> 既然线程安全是写冲突和读写冲突导致的,最简单办法就是，读写都加锁。
+> 		例如：
+			1.ArrayList 的方法都加上 synchronized -> Vector
+			2.Collections.synchronizedList，强制将 List 的操作加上同步
+			3.Arrays.asList，不允许添加删除，但是可以 set 替换元素
 
-安全问题：
+**CopyOnWriteArrayList** : 通过读写分离保证最终一致,**副本机制进行改进**
 
-1、写冲突：\- 两个写，相互操作冲突
+- 插入元素时候 : 在新副本操作，不影响旧引用,加锁保证不会写混乱
 
-2、读写冲突：
+- 删除元素时 : 
+  - 删除末尾元素，直接使用前 N-1 个元素创建一个新数组。
+  - 删除其他位置元素，创建新数组，将剩余元素复制到新数组。
+- 读取不需要加锁 , 使用迭代器的时候，因为直接拿当前的数组对象做一个快照，此后的 List元素变动，就跟这次迭代没关系了。
 
-\- 读，特别是 iterator 的时候，数据个数变了，拿到了非预期数据或者报错
+**Set**：LinkedSet,HashSet,TreeSet
 
-\- 产生ConcurrentModificationException
-
-```
-List 线程安全的简单办法
-
-既然线程安全是写冲突和读写冲突导致的
-最简单办法就是，读写都加锁。
-例如：
-- 1.ArrayList 的方法都加上 synchronized -> Vector
-- 2.Collections.synchronizedList，强制将 List 的操作加上同步
-- 3.Arrays.asList，不允许添加删除，但是可以 set 替换元素
-- 4.Collections.unmodifiableList，不允许修改内容，包括添加删除和 set
-```
-
-**CopyOnWriteArrayList**
-
-1、写加锁，保证不会写混乱
-
-2、写在一个 Copy 副本上，而不是原始数据上（类似GC young 区用复制，old 区用本区内的移动）
-
-- 通过读写分离保证最终一致
+**Queue** : Deque,LinkedList
 
 
 
-1、插入元素时，在新副本操作，不影响旧引用，why?
-
-2、删除元素时，
-
-1）删除末尾元素，直接使用前 N-1 个元素创建一个新数组。
-
-2）删除其他位置元素，创建新数组，将剩余元素复制到新数组。
-
-3、读取不需要加锁，why？
-
-4、使用迭代器的时候，
-
-直接拿当前的数组对象做一个快照，此后的 List元素变动，就跟这次迭代没关系了。
-
-
-
-
-
-**Set**：LinkedSet、HashSet、TreeSet
-
-**Queue**->Deque->LinkedList
-
-
-
-**Map**：HashMap、LinkedHashMap、TreeMap
-
-
+## 7.2 MAP HashMap、LinkedHashMap、TreeMap
 
 **HashMap**
 
-基本特点：空间换时间，哈希冲突不大的情况下查找数据性能很高
+- 基本特点：空间换时间，哈希冲突不大的情况下查找数据性能很高
 
-用途：存放指定 key 的对象，缓存对象
+- 用途：存放指定 key 的对象，缓存对象
 
-原理：使用 hash 原理，存 k-v 数据，初始容量16，扩容 x2，负载因子0.75
-
-JDK8 以后，在链表长度到8 & 数组长度到64时，使用红黑树。
-
-```
-安全问题：
-1、写冲突，
-2、读写问题，可能会死循环
-3、keys()无序问题
-```
+- 原理：使用 hash 原理，存 k-v 数据，初始容量16，扩容 x2，负载因子0.75 , JDK8 以后，在链表长度到8 & 数组长度到64时，使用红黑树。
+- 安全问题 : 写冲突，读写问题(可能会死循环),keys()无序问题 
 
 **LinkedHashMap**
 
-```
-基本特点：继承自 HashMap，对 Entry 集合添加了一个双向链表
-用途：保证有序，特别是 Java8 stream 操作的 toMap 时使用
-原理：同 LinkedList，包括插入顺序和访问顺序
-安全问题：
-同 HashMap
-```
-
-
+- 基本特点：继承自 HashMap，对 Entry 集合添加了一个双向链表
+- 用途：保证有序，特别是 Java8 stream 操作的 toMap 时使用
+- 原理：同 LinkedList，包括插入顺序和访问顺序
+- 安全问题：同 HashMap
 
 **ConcurrentHashMap-Java7** **分段锁**
 
-```
-分段锁
-默认16个Segment，降低锁粒度。操作数据时候只要锁上对应的Segment段,达到降低锁力度的目的
-concurrentLevel = 16
+- Java 7为实现并行访问，引入了Segment 这一结构，实现了分段锁，理论上最大并发度与 Segment 个数相等。
+- 分段锁 : 默认16个Segment，降低锁粒度。操作数据时候只要锁上对应的Segment段,达到降低锁力度的目的
+- Java 8为进一步提高并发性，摒弃了分段锁的方案，而是直接使用一个大的数组。
+- 因为list元素多的时候采用红黑树,链表不会过长,底层使用CAS操作.
 
-Java 7为实现并行访问，引入了Segment 这一结构，实现了分段锁，理论上最大并发度与 Segment 个数相等。
+**Dictionary** : HashTable , Properties
 
-Java 8为进一步提高并发性，摒弃了分段锁的方案，而是直接使用一个大的数组。 why?
-```
+# 八.并发编程相关内容
 
+- **线程安全操作利器** **- ThreadLocal** : 线程本地变量 , 每个线程都拥有一个属于自己的副本 , 需要注意及时清理
 
+| 重要方法                 | 说明                |
+| ------------------------ | ------------------- |
+| oublic ThreadLocal()     | 构造方法            |
+| protected initialValue() | 覆写-设置默认初始值 |
+| void set(T value)        | 设置本线程对应的值  |
+| void remove()            | 清理本线程对应的值  |
+| T get()                  | 获取本线程对应的值  |
 
-![image-20210803141637270](../../resources/java/java_concurrency/image-20210803141637270.png)
+- **并行** **Stream** : 多线程执行，只需要加个 parallel 即可
 
+# 九. 并发编程经验总结
 
-
-Dictionary->HashTable->Properties
-
-
-
-
-
-
-
-# 并发编程相关内容
-
-
-
-**线程安全操作利器** **- ThreadLocal**
-
-![image-20210803141723382](../../resources/java/java_concurrency/image-20210803141723382.png)
-
-• 线程本地变量
-
-• 场景: 每个线程一个副本
-
-• 不改方法签名静默传参
-
-• 及时进行清理
-
-
-
-**并行** **Stream** : 多线程执行，只需要加个 parallel 即可
-
-
-
-# 并发编程经验总结
-
-**加锁需要考虑的问题**
+## 9.1 加锁需要考虑的问题 : 
 
 ```
 1. 粒度
@@ -1017,9 +943,9 @@ Dictionary->HashTable->Properties
 6. 场景: 脱离业务场景谈性能都是耍流氓
 ```
 
-**线程间协作与通信**
+##  9.2 线程间协作与通信
 
-**1.** **线程间共享**
+### 9.2.1 线程间共享
 
 • static/实例变量(堆内存) 
 
@@ -1027,7 +953,7 @@ Dictionary->HashTable->Properties
 
 • synchronized
 
-**2.** **线程间协作**
+### 9.2.2 线程间协作
 
 • Thread#join()
 
@@ -1039,13 +965,11 @@ Dictionary->HashTable->Properties
 
 • CyclicBarrier
 
-
-
-
-
 # 参考资料
 
 - [1] [Java 线程实现原理](https://blog.csdn.net/jxch____/article/details/115492362)
-- [2] [Java 用户线程和守护线程](https://www.cnblogs.com/myseries/p/12078413.html)
-- [3] [深入理解synchronized底层原理](https://zhuanlan.zhihu.com/p/75880892)
-- [4] [并发原子类](https://blog.csdn.net/weixin_38003389/article/details/88569336)
+- [2] [Sleep 和 wait区别](https://www.huaweicloud.com/articles/5687f49cba72e2bc842549296b4344ee.html)
+- [3] [Java 用户线程和守护线程](https://www.cnblogs.com/myseries/p/12078413.html)
+- [4] [深入理解synchronized底层原理](https://zhuanlan.zhihu.com/p/75880892)
+- [5] [并发原子类](https://blog.csdn.net/weixin_38003389/article/details/88569336)
+
