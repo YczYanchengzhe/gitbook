@@ -5,17 +5,14 @@
 ## 一. Spring框架与 AOP/IoC
 
 ### 1.1 Spring framework 6大模块： 
-- Core technologies: dependency injection, events, resources, i18n, validation, data binding, type conversion, SpEL, AOP. 
-
-- Testing: mock objects, TestContext framework, Spring MVC Test, WebTestClient. 
-
-- Data Access: transactions, DAO support, JDBC, ORM, Marshalling XML. 
-
-- Spring MVC/WebFlux: web frameworks. 
-
-- Integration: remoting, JMS, JCA, JMX, email, tasks, scheduling, cache. 
-
-- Languages: Kotlin, Groovy, dynamic languages
+- Core : IoC Container, Events, Resources, i18n, Validation, Data Binding, Type Conversion, SpEL, AOP.
+- Testing : Mock Objects, TestContext Framework, Spring MVC Test, WebTestClient.
+- Data Access : Transactions, DAO Support, JDBC, R2DBC, O/R Mapping, XML Marshalling.
+- Web Servlet : Spring MVC, WebSocket, SockJS, STOMP Messaging.
+- Web Reactive : Spring WebFlux, WebClient, WebSocket, RSocket.
+- Integration : Remoting, JMS, JCA, JMX, Email, Tasks, Scheduling, Caching.
+- Languages : Kotlin, Groovy, Dynamic Languages.
+- Appendix : Spring properties.
 
 ### 1.2 AOP-面向切面编程 
 Spring早期版本的核心功能，管理对象生命周期与对象装配。 为了实现管理和装配，一个自然而然的想法就是，加一个中间层代理（字节码增强）来实现所有对象的托管。
@@ -23,6 +20,8 @@ Spring早期版本的核心功能，管理对象生命周期与对象装配。 �
 ### 1.3 IoC-控制反转 也成为DI（Dependency Injection）依赖注入
 
 对象装配思路的改进。 从对象A直接引用和操作对象B，变成对象A里指需要依赖一个接口IB，系统启动和装配阶段，把IB接口的实例对象注 入到对象A，这样A就不需要依赖一个IB接口的具体实现，也就是类B。 从而可以实现在不修改代码的情况，修改配置文件，即可以运行时替换成注入IB接口另一实现类C的一个对象实例.
+
+可以解决循环依赖的问题 ,但是需要注意,对于构造函数的循环依赖无法解决,因为处理的办法需要存在一个实例,但是构造函数的循环依赖导致无法实例化.
 
 ## 二. Spring - Bean
 
@@ -42,29 +41,39 @@ Spring早期版本的核心功能，管理对象生命周期与对象装配。 �
 
 ### 2.3 Bean 的生命周期 - 底层实现
 
-创建对象
-1）创建对象 2）属性赋值 3）初始化 4）注销接口注册
-![3](../../resources/java/java_frame/3.png)
+**创建对象**
 
-初始化对象
-1）检查Aware装配 2）前置处理、After处理 3）调用init method 4）后置处理
-![4](../../resources/java/java_frame/4.png)
+- 创建对象
+- 属性赋值 
+- 初始化 
+- 注销接口注册
+  ![3](../../resources/java/java_frame/3.png)
 
-Aware 接口有： 
-BeanNameAware：注入当前 bean 对应 beanName； 
-BeanClassLoaderAware：注入加载当前 bean 的 ClassLoader； 
-BeanFactoryAware：注入 当前BeanFactory容器 的引用。 
+**初始化对象**
 
-对于 ApplicationContext 类型的容器（通过 BeanPostProcessor ）： 
-EnvironmentAware：注入 Enviroment，一般用于获取配置属性； 
-EmbeddedValueResolverAware：注入 EmbeddedValueResolver（Spring EL解析器,Spring表达式语言（简称SpEl）是一个支持查询和操作运行时对象导航图功能的强大的表达式语言. 它的语法类似于传统EL，但提供额外的功能，最出色的就是函数调用和简单字符串的模板函数），一般用于参数解析； 
-ApplicationContextAware（ResourceLoader、ApplicationEventPublisherAware、MessageSourceAware）：注 入 ApplicationContext 容器本身。
+- 检查Aware装配 
+- 前置处理、After处理 
+- 调用init method 
+- 后置处理
+  ![4](../../resources/java/java_frame/4.png)
 
-BeanPostProcessor 是 Spring 为修改 bean提供的强大扩展点，其可作用于容器中所有 bean
+**Aware 接口有：** 
+
+- BeanNameAware：注入当前 bean 对应 beanName； 
+- BeanClassLoaderAware：注入加载当前 bean 的 ClassLoader； 
+- BeanFactoryAware：注入 当前BeanFactory容器 的引用。 
+
+**对于 ApplicationContext 类型的容器（通过 BeanPostProcessor ）：** 
+
+- EnvironmentAware：注入 Enviroment，一般用于获取配置属性； 
+- EmbeddedValueResolverAware：注入 EmbeddedValueResolver（Spring EL解析器,Spring表达式语言（简称SpEl）是一个支持查询和操作运行时对象导航图功能的强大的表达式语言. 它的语法类似于传统EL，但提供额外的功能，最出色的就是函数调用和简单字符串的模板函数），一般用于参数解析； 
+- ApplicationContextAware（ResourceLoader、ApplicationEventPublisherAware、MessageSourceAware）：注 入 ApplicationContext 容器本身。
+
+**BeanPostProcessor 是 Spring 为修改 bean提供的强大扩展点，其可作用于容器中所有 bean**
 
 ![5](../../resources/java/java_frame/5.png)
 
-InitializingBean 和 init-method 是 Spring 为 bean 初始化提供的扩展点。
+**InitializingBean 和 init-method 是 Spring 为 bean 初始化提供的扩展点。**
 
 ![](../../resources/java/java_frame/6.png)
 
@@ -190,7 +199,7 @@ GlobalSession（给每一个 global http session新建一个Bean实例）
 
 @EnableWebMvc 开启Web MVC的配置支持 
 
-@EnableConfigurationProperties 开启对@ConfigurationProperties注解配置Bean的支持 
+@EnableConfigurationProperties 开启对@ConfigurationProperties注解配置Bean的支持 (对于配置类实现一次注入)
 
 @EnableJpaRepositories 开启对SpringData JPA Repository的支持 @EnableTransactionManagement 开启注解式事务的支持 
 
@@ -353,8 +362,6 @@ Spring Data 项目所支持的关系数据存储（前面ORM部分）： - - JDB
 
 
 
-
-
 **Spring-message 模块** : 简化消息操作，实现面向对象一样的方式去发送和接收消息
 
 XXXTemplate：如JMSTemplate，KafkaTemplate，AmqpTemplate 
@@ -362,16 +369,17 @@ XXXTemplate：如JMSTemplate，KafkaTemplate，AmqpTemplate
 Converter：转换Pojo与Message对象
 
 
+## 六. spring-profile 和 maven -  profile 区别
+- Maven的profile用于在打包时根据指定环境替换不同环境的配置文件配置 ,编译打包时候生效
+- Spring的Profile可以用于在不同的环境下加载不同的bean,运行时生效
 
 
 
-
-
-
-
+# 参考文献
 
 - [1] [Spring注解驱动开发](https://www.cnblogs.com/binghe001/p/13174687.html)
-- [1] [Spring拓展接口之BeanPostProcessor](https://www.cnblogs.com/youzhibing/p/10559330.html)
+- [2] [Spring拓展接口之BeanPostProcessor](https://www.cnblogs.com/youzhibing/p/10559330.html)
+- [3] [Maven profile整合Spring profile](https://blog.csdn.net/xiao__gui/article/details/88189429)
 
 
 

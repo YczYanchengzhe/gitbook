@@ -182,19 +182,42 @@ starter模块：提供对autoconfigure模块的依赖，以及一些其它的依
 # 六. Spring 注意事项 : 
 
 1. 代码结构： 避免使用默认包 如果创建的类没有声明包信息，则类会默认使用默认包，默认包使用在使用诸如@ComponentScan, @EntityScan, 及@SpringBootApplication时可能会引发特殊问题。 官方建议遵循java既有的命名约定规则，使用反转域名的方式命名包。例如，com.example.project. 
-
 2. 应用主类位置： 通常我们建议将主类放置于根路径下，注解@SpringBootApplication 通常放置于主类上，并且作为么某些扫描的根 路径。如JPA配置的Entity扫描等。 @SpringBootApplication注解包含 @EnableAutoConfiguration 和 @ComponentScan ，可以单独配置，或者直 接使用@SpringBootApplication 简化配置。 
-
 3. 配置类@Configuration： Spring boot倾向使用基于java配置类的配置方式，建议使用主类作为主要的配置位置@Configuration。
-
 4. 引入额外的配置类：不需要将所有的配置放到一个配置类中，可以通过使用@Import注解引入额外的配置类信息。 当然@ComponentScan注解会扫描包含@Configuration注解的配置类。 
-
 5. 引入xml配置：如果存在不许使用xml配置的情况，则可以通过@ImportResource注解来进行加载。 
-
 6. 自动配置@EnableAutoConfiguration Spring boot基于添加的相应的功能jar进行自动配置。例如，类路径中有HSQLDB jar包的情况下，如果没有主动定义 相应的数据源连接bean，则spring boot会自动配置内存数据库。自动配置需添加相应的 @EnableAutoConfiguration或者@SpringBootApplication来启用。通常放置其一于主类即可。 
-
 7. 自动配置的覆盖： 自动配置是非侵入性的，可以通过定义相应的自定义配置类进行覆盖，如果需要知道工程目前使用了那些自动配置， 可以通过在启动时添加—debug选项，来进行输出。 
-
 8. 禁用某些自动配置 如果发现输出的日中包含一些不需要应用的自动配置可以通过在注解@EnableAutoConfiguration上添加exclude附 加选项来禁用。 
-
 9. maven打包后为fat jar： mvn clean package 使用maven插件运行： $ mvn spring-boot:run
+
+
+
+# 七. Hibernate 和 MyBatis
+
+## 7.1 Hibernate
+ORM（Object-Relational Mapping） 表示对象关系映射。
+
+Hibernate 是一个开源的对象关系映射框架，它对JDBC 进行了非常轻量级的对象封装，它将 POJO 与数据库表建立映射关系，是一个全自动的 orm 框架，hibernate 可以自动生成 SQL 语句，自动执行，使得 Java 程序员可以使用面向对象的思维来操纵数据库。
+
+Hibernate 里需要定义实体类和 hbm 映射关系文件（IDE 一般有工具生成）。
+
+Hibernate 里可以使用 HQL、Criteria、Native SQL三种方式操作数据库。也可以作为 JPA 适配实现，使用 JPA 接口操作。
+
+## 7.2 MyBatis
+
+MyBatis 是一款优秀的持久层框架，它支持定制化 SQL、存储过程以及高级映射。MyBatis 避免了几乎所有的JDBC 代码和手动设置参数以及获取结果集。MyBatis 可以使用简单的 XML 或注解来配置和映射原生信息，将接口和 Java 的 POJOs(Plain Old Java Objects,普通的 Java 对象)映射成数据库中的记录。
+
+## 7.3 对比
+
+- Mybatis 优点：原生 SQL（XML 语法），直观，对 DBA 友好
+- Hibernate 优点：简单场景不用写 SQL（HQL、Cretiria、SQL）
+- Mybatis 缺点：繁琐，可以用 MyBatis-generator、MyBatis-Plus 之类的插件
+- Hibernate 缺点：对 DBA 不友好
+
+## 7.4 使用ORM 经验
+- 本地事务（事务的设计与坑）
+- 多数据源（配置、静态制定、动态切换）
+- 线程池配置（大小、重连）
+- ORM 内的复杂 SQL，级联查询
+- ORM 辅助工具和插件
