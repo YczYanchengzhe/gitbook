@@ -300,7 +300,7 @@ Hibernate缺点：对DBA不友好
 ![](../../resources/java/java_frame/10.png)
 
 Spring声明式事务配置参考 
-事务的传播性： @Transactional(propagation=Propagation.REQUIRED) 
+		事务的传播性： @Transactional(propagation=Propagation.REQUIRED) 
 
 事务的隔离级别： @Transactional(isolation = Isolation.READ_UNCOMMITTED) 读取未提交数据(会出现脏读, 不可重复读) 基本不使用 
 
