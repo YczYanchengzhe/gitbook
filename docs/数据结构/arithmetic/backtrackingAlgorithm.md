@@ -11,103 +11,177 @@
 我们有一个 8x8 的棋盘，希望往里放 8 个棋子（皇后），每个棋子所在的行、列、对角线都不能有另一个棋子
 
 ```
+public class Queens8 {
 
-int[] result = new int[8];//全局或成员变量,下标表示行,值表示queen存储在哪一列
-public void cal8queens(int row) { // 调用方式：cal8queens(0);
-  if (row == 8) { // 8个棋子都放置好了，打印结果
-    printQueens(result);
-    return; // 8行棋子都放好了，已经没法再往下递归了，所以就return
-  }
-  for (int column = 0; column < 8; ++column) { // 每一行都有8中放法
-    if (isOk(row, column)) { // 有些放法不满足要求
-      result[row] = column; // 第row行的棋子放到了column列
-      cal8queens(row+1); // 考察下一行
-    }
-  }
-}
+    /**
+     * 数组的维度
+     */
+    private final int count;
 
-private boolean isOk(int row, int column) {//判断row行column列放置是否合适
-  int leftup = column - 1, rightup = column + 1;
-  for (int i = row-1; i >= 0; --i) { // 逐行往上考察每一行
-    if (result[i] == column) return false; // 第i行的column列有棋子吗？
-    if (leftup >= 0) { // 考察左上对角线：第i行leftup列有棋子吗？
-      if (result[i] == leftup) return false;
-    }
-    if (rightup < 8) { // 考察右上对角线：第i行rightup列有棋子吗？
-      if (result[i] == rightup) return false;
-    }
-    --leftup; ++rightup;
-  }
-  return true;
-}
+    /**
+     * 下标代表第几行 , 元素代表第几列 , 通过这个数组存储 Q 都放在了哪些位置
+     */
+    private final int[] arr;
 
-private void printQueens(int[] result) { // 打印出一个二维矩阵
-  for (int row = 0; row < 8; ++row) {
-    for (int column = 0; column < 8; ++column) {
-      if (result[row] == column) System.out.print("Q ");
-      else System.out.print("* ");
+    /**
+     * 计算第几行
+     *
+     * @param row
+     */
+    public void calc8Queen(int row) {
+        // 计算完成
+        if (row == count) {
+            // 打印结果
+            printQueen(arr);
+        }
+        // 每一行中都有 count 中放置方法
+        for (int column = 0; column < arr.length; column++) {
+            // 判断当前行列能否放置
+            if (isSet(row, column)) {
+                // 进行放置
+                arr[row] = column;
+                // 可以的话 放置下一行
+                calc8Queen(row + 1);
+            }
+        }
+
     }
-    System.out.println();
-  }
-  System.out.println();
+
+    private void printQueen(int[] arr) {
+        // 使用二位数组的方式打印
+        for (int row = 0; row < arr.length; row++) {
+            for (int column = 0; column < arr.length; column++) {
+                if (arr[row] == column) {
+                    System.out.print("Q ");
+                } else {
+                    System.out.print("* ");
+                }
+            }
+            System.out.println();
+        }
+        System.out.println();
+    }
+
+    /**
+     * 判断该位置是否可以放置
+     *
+     * @param row
+     * @param column
+     * @return
+     */
+    private boolean isSet(int row, int column) {
+        // 判断行列是否存在Q , 对角线是否存在Q
+        int leftUp = column - 1;
+        int rightUp = column + 1;
+        // 逐行判断
+        for (int currRow = row - 1; currRow >= 0; currRow--) {
+            // 判断行列是否存在Q , 左对角线 , 右对角线
+            if (arr[currRow] == column || arr[currRow] == leftUp || arr[currRow] == rightUp) {
+                return false;
+            }
+            // 左右对角线移动
+            leftUp--;
+            rightUp++;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) {
+        Queens8 queens8 = new Queens8(4);
+    }
+
+
+    public Queens8() {
+        this.count = 8;
+        arr = new int[count];
+        calc8Queen(0);
+    }
+
+    public Queens8(int count) {
+        this.count = count;
+        arr = new int[count];
+        calc8Queen(0);
+    }
 }
 ```
 
 ### 2.2 0-1 背包问题
 ```
+    public int maxWeight = -1;
 
-public int maxW = Integer.MIN_VALUE; //存储背包中物品总重量的最大值
-// cw表示当前已经装进去的物品的重量和；i表示考察到哪个物品了；
-// w背包重量；items表示每个物品的重量；n表示物品个数
-// 假设背包可承受重量100，物品个数10，物品重量存储在数组a中，那可以这样调用函数：
-// f(0, 0, a, 10, 100)
-public void f(int i, int cw, int[] items, int n, int w) {
-  if (cw == w || i == n) { // cw==w表示装满了;i==n表示已经考察完所有的物品
-    if (cw > maxW) maxW = cw;
-    return;
-  }
-  f(i+1, cw, items, n, w);
-  if (cw + items[i] <= w) {// 已经超过可以背包承受的重量的时候，就不要再装了
-    f(i+1,cw + items[i], items, n, w);
-  }
-}
+    /**
+     * @param i          表示考察到哪个物品了
+     * @param currWeight 表示当前已经装进去的物品的重量和
+     * @param items      表示每个物品的重量
+     * @param n          表示物品个数
+     * @param weight     背包重量
+     */
+    private void myPackage(int i, int currWeight, int[] items, int n, int weight) {
+        // 看到背包中的最后一个物品了,可以退出
+        if (i == n) {
+            maxWeight = Math.max(currWeight, maxWeight);
+            return;
+        }
+        // 每个物品都有两种情况 , 放和不放
+        // 不放
+        myPackage(i + 1, currWeight, items, n, weight);
+        // 放 要保证不超重
+        if (currWeight + items[i] <= weight) {
+            myPackage(i + 1, currWeight + items[i], items, n, weight);
+        }
+    }
 ```
 
 ### 2.3 正则表达式
+
+```
+给你一个字符串 s 和一个字符规律 p，请你来实现一个支持 '.' 和 '*' 的正则表达式匹配。
+
+'.' 匹配任意单个字符
+'*' 匹配零个或多个前面的那一个元素
+所谓匹配，是要涵盖 整个 字符串 s的，而不是部分字符串。
+
+来源：力扣（LeetCode）
+链接：https://leetcode-cn.com/problems/regular-expression-matching
+著作权归领扣网络所有。商业转载请联系官方授权，非商业转载请注明出处。
 ```
 
-public class Pattern {
-  private boolean matched = false;
-  private char[] pattern; // 正则表达式
-  private int plen; // 正则表达式长度
 
-  public Pattern(char[] pattern, int plen) {
-    this.pattern = pattern;
-    this.plen = plen;
-  }
 
-  public boolean match(char[] text, int tlen) { // 文本串及长度
-    matched = false;
-    rmatch(0, 0, text, tlen);
-    return matched;
-  }
 
-  private void rmatch(int ti, int pj, char[] text, int tlen) {
-    if (matched) return; // 如果已经匹配了，就不要继续递归了
-    if (pj == plen) { // 正则表达式到结尾了
-      if (ti == tlen) matched = true; // 文本串也到结尾了
-      return;
-    }
-    if (pattern[pj] == '*') { // *匹配任意个字符
-      for (int k = 0; k <= tlen-ti; ++k) {
-        rmatch(ti+k, pj+1, text, tlen);
-      }
-    } else if (pattern[pj] == '?') { // ?匹配0个或者1个字符
-      rmatch(ti, pj+1, text, tlen);
-      rmatch(ti+1, pj+1, text, tlen);
-    } else if (ti < tlen && pattern[pj] == text[ti]) { // 纯字符匹配才行
-      rmatch(ti+1, pj+1, text, tlen);
-    }
-  }
-}
+
+![image-20211005162129329](../../resources/technology/image-20211005162129329.png)
+
 ```
+		public boolean isMatch(String s, String p) {
+        int m = s.length();
+        int n = p.length();
+
+        boolean[][] arr = new boolean[m + 1][n + 1];
+        arr[0][0] = true;
+        for (int i = 0; i <= m; i++) {
+            for (int j = 1; j <= n; j++) {
+                // 挨个匹配
+                if (p.charAt(j - 1) != '*') {
+                    if (match(s, p, i, j)) {
+                        arr[i][j] = arr[i - 1][j - 1];
+                    }
+                } else {
+                    arr[i][j] = arr[i][j - 2];
+                    if (match(s, p, i, j - 1)) {
+                        arr[i][j] = arr[i - 1][j] || arr[i][j - 2];
+                    }
+                }
+            }
+        }
+        return arr[m][n];
+    }
+
+    private boolean match(String s, String p, int i, int j) {
+        if (i == 0) {
+            return false;
+        }
+        return p.charAt(j - 1) == '.' || s.charAt(i - 1) == p.charAt(j - 1);
+    }
+```
+

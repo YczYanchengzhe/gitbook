@@ -23,6 +23,8 @@
 -- 查看当前Mysql 支持的存储引擎以及这些存储引擎是否支持事务
 SHOW ENGINES
 ```
+![image-20211016161012024](../../resources/sql/image-20211016161012024.png)
+
 #### 1.事务的相关操作
 
 START TRANSACTION 或者 BEGIN，作用是显式开启一个事务。
@@ -52,6 +54,7 @@ CREATE TABLE test(name varchar(255), PRIMARY KEY (name)) ENGINE=InnoDB;
 SET @@completion_type = 1;
 BEGIN;
 INSERT INTO test SELECT '关羽';
+-- 如果执行 commit 则提交事务。如果执行 commit work and chain，则是提交事务并自动启动下一个事务，这样也省去了再次执行 begin 语句的开销
 COMMIT;
 INSERT INTO test SELECT '张飞';
 INSERT INTO test SELECT '张飞';
@@ -95,7 +98,12 @@ SET SESSION TRANSACTION ISOLATION LEVEL READ UNCOMMITTED;
 -- 取消事务自动提交
 SET autocommit = 0;
 ```
+![image-20211016161244959](../../resources/sql/image-20211016161244959.png)
+
+
+
 #### 1.脏读
+
 ```sql
 -- 客户端1
 begin;
@@ -131,3 +139,16 @@ select * from heros_temp;
 ```
 
 ![1607877822199](../../resources/sql/PhantomReading.png)
+
+
+## 五. 为什么不建议使用长事务
+
+因为基于多版本并发控制来实现的事务，所以每一个事务的回滚日志，都会保留到系统里没有比这个回滚日志更早的 read-view 时候。
+- 长事务也就说明系统中会存在很老的事务，由于这些食物可能访问数据库中的任何数据，所以在这个事务提交前，数据库需要保留他的全部回滚记录，这会导致占用大量的存储空间。
+- 在 MySQL 5.5 以及之前版本，回滚日志是和数据字典一起放在 ibdata 中。回滚日志即使长事务被提交也不会被清除
+- 长事务会占用锁资源，拖垮数据库
+
+
+
+
+
