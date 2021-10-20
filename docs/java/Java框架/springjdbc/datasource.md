@@ -73,13 +73,32 @@ spring.datasource.druid.test-on-return=true
 spring.datasource.druid.test-while-idle=true
 ```
 
+- 系统属性配置
+```properties
+druid.stat.logSlowSql=true
+druid.stat.slowSqlMillis=3000
+```
+
+- Springboot
+```properties
+spring.datasource.druid.filter.stat.enable=true
+spring.datasource.druid.filter.stat.log-slow-sql=true
+spring.datasource.druid.filter.stat.slow-sql-millis=3000
+```
+
+### 关于 Druid 使用的 注意事项
+- 没有特殊情况,不要再生产环境打开监控的 Servlet ,生产环境集群化部署,存在安全隐患,并且查看并不方便
+- 没有链接泄露可能的情况下,不要开启 : removeAbandoned , 对性能有很大影响
+- testXxx 相关配置使用注意 , 会影响性能
+- 务必配置合理的超时时间.
 
 ## 三. 连接池选择
 
 - 可靠性
 - 性能
 - 功能
-- 客运卫星
+- 
+- 可运维性
 - 可扩展性
 - 数据加密 : 密码加密
 - 社区活跃度
