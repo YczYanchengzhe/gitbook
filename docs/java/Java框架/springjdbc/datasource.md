@@ -97,7 +97,6 @@ spring.datasource.druid.filter.stat.slow-sql-millis=3000
 - 可靠性
 - 性能
 - 功能
-- 
 - 可运维性
 - 可扩展性
 - 数据加密 : 密码加密

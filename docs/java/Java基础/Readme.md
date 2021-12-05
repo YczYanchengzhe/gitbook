@@ -152,7 +152,14 @@ https://blog.csdn.net/qq_37964379/article/details/88528997
 
 https://codesearch.aixcoder.com/#/
 
-## 14. - 
+## 14. @SuppressWarnings - 关闭编译器警告信息
+
+- all : 去除所有警告
+
+- boxing : 去除装箱拆箱警告
+- unchecked : 单类型的警告
+- unused : 未使用
+- rawtypes : 在类参数上使用泛型时抑制与非特定类型相关的警告
 
 ## 15. String
 StringBuilder 相较于 StringBuffer 有速度优势 在应用程序要求线程安全的情况下，必须使用 StringBuffer

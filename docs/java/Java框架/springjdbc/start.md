@@ -87,3 +87,48 @@ private void showData() {
 - 关注每次使用的数据源
   - 当存在多个 dataSource 时候系统如何判断
   - 对应的设施(事务,ORM)如何选择 DataSource
+
+### 2.5 springvoot 的 ApplicationRunner 和 CommandLineRunner
+- 参数不同
+- 执行顺序不同 : 在 order 一样的时候 ,先执行 ApplicationRunner
+- 指定 Order 的情况下 order 越小的先执行
+
+
+```java
+@Component
+@Slf4j
+@Order(value = 1)
+public class BeanA implements ApplicationRunner {
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		log.info("BeanA start");
+	}
+}
+@Component
+@Slf4j
+@Order(value = 2)
+public class BeanB implements CommandLineRunner {
+	@Override
+	public void run(String... args) throws Exception {
+		log.info("BeanB start");
+	}
+}
+
+@Component
+@Slf4j
+@Order(value = 2)
+public class BeanC implements ApplicationRunner {
+
+	@Override
+	public void run(ApplicationArguments args) throws Exception {
+		log.info("BeanC start");
+	}
+}
+
+```
+
+```txt
+BeanA start
+BeanC start
+BeanB start
+```
