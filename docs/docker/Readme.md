@@ -50,6 +50,8 @@ docker pull mongo
 docker images
 # 启动 mongo
 docker run --name mongo -p 27017:27017 -v ~/docker-data/mongo:/data/db -e MONGO_INITDB_ROOT_USERNAME=admin -e MONGO_INITDB_ROOT_PASSWORD=admin -d mongo
+# 启动 mongo
+docker start mongo
 # 查看镜像运行情况
 docker ps
 # 登录到 MongoDB 容器中
