@@ -61,3 +61,5 @@ fabric.properties
 
 /docs/_site
 /docs/.jekyll-cache
+/project/pulsar_demo/.idea/
+/project/pulsar_demo/target/
