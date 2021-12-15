@@ -316,6 +316,12 @@ vmstat 2 1
 
  
 
+#### 21. scp 远程文件传输
+```shell
+# scp 文件 用户@ip:/路径
+scp  file work@10.126.1.1:/data
+```
+
 
 # 参考资料
 
