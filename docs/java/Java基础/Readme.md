@@ -204,6 +204,15 @@ SNAPSHOT：快照版，可以稳定使用，且仍在继续改进版本。
 - SR：修正版
 - Trial：试用版（一般有时间或者功能限制）
 
+#### 17. String intern 方法
+https://tech.meituan.com/2014/03/06/in-depth-understanding-string-intern.html
+
+
+#### 18. JMX
+jmx 中 mbean 使用
+http://www.4k8k.xyz/article/chinabestchina/108458931
+与actuator 结合
+http://hk.noobyard.com/article/p-ymdepcfh-et.html
 
 
 
