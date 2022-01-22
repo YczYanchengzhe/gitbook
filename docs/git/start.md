@@ -51,6 +51,8 @@ git add -u 			# 将目录下被git管理的文件全部提交到暂存区
 git commit -m'commit message'
 # 查看git提交记录
 git log
+# 修改上次提交的用户名和地址
+git commit --amend --author="yanchengzhe <yanchengzhe@58.com>" -m "yanchengzhe"
 ```
 
 ## 4.git文件重命名

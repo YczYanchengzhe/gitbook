@@ -1,33 +1,32 @@
-* 必备知识
-	* Git
-	  * [Git简介](git/README.md)
-	  * [快速开始](git/start.md)
-	  * [Git相关知识](git/git-file.md)
-	  * [使用禁忌](git/taboo.md)
-	  * [GitHub简介](git/github.md)
-	* 数据库
-	  * 数据库基础
-      * [数据库简介](sql/基础/Readme.md)
-      * [SQL增删改查](sql/基础/start.md)
-      * [SQL数据过滤](sql/基础/start-2.md)
-      * [SQL函数](sql/基础/start-function.md)
-      * [SQL视图](sql/基础/view.md)
-      * [SQL存储过程](sql/基础/StoredProcedure.md)
-      * [事务](sql/基础/transaction.md)
-      * [子查询与连接](sql/基础/sub-queries.md) 
-      * [数据库相关知识](sql/基础/sql-about.md)
-	  * 数据库调优相关知识
-      *  [索引](sql/调优/index.md)
-      *  [如何通过索引让SQL执行更高效](sql/调优/index_sql.md) 
-      *  [数据库中的存储结构是怎样的](sql/调优/save_sql.md) 
-      *  [从磁盘I/O的角度理解SQL查询的成本](sql/调优/io_sql.md) 
-      *  [乐观锁和悲观锁](sql/调优/lock.md) 
-	    *  [RDBMS中的MVCC ](sql/调优/mvcc.md) 
-	    *  [查询优化器](sql/调优/optimize.md) 
-	    *  [SQL优化](sql/调优/util.md) 
-	* 命令相关
-	  * [Linux命令](cmd\linux\linux.md)
-	  * [vim命令](cmd\vim.md) 
+* Git
+  * [Git简介](git/README.md)
+  * [快速开始](git/start.md)
+  * [Git相关知识](git/git-file.md)
+  * [使用禁忌](git/taboo.md)
+  * [GitHub简介](git/github.md)
+* 数据库
+  * 数据库基础
+    * [数据库简介](sql/基础/Readme.md)
+    * [SQL增删改查](sql/基础/start.md)
+    * [SQL数据过滤](sql/基础/start-2.md)
+    * [SQL函数](sql/基础/start-function.md)
+    * [SQL视图](sql/基础/view.md)
+    * [SQL存储过程](sql/基础/StoredProcedure.md)
+    * [事务](sql/基础/transaction.md)
+    * [子查询与连接](sql/基础/sub-queries.md) 
+    * [数据库相关知识](sql/基础/sql-about.md)
+  * 数据库调优相关知识
+    *  [索引](sql/调优/index.md)
+    *  [如何通过索引让SQL执行更高效](sql/调优/index_sql.md) 
+    *  [数据库中的存储结构是怎样的](sql/调优/save_sql.md) 
+    *  [从磁盘I/O的角度理解SQL查询的成本](sql/调优/io_sql.md) 
+    *  [乐观锁和悲观锁](sql/调优/lock.md) 
+    *  [RDBMS中的MVCC ](sql/调优/mvcc.md) 
+    *  [查询优化器](sql/调优/optimize.md) 
+    *  [SQL优化](sql/调优/util.md) 
+* 命令相关
+  * [Linux命令](cmd\linux\linux.md)
+  * [vim命令](cmd\vim.md) 
 * 数据结构
   * [简介](数据结构/README.md)
   * [复杂度分析](数据结构/complexity.md) 

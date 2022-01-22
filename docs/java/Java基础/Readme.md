@@ -1,7 +1,5 @@
 # Java 基础
 
-
-
 # 一. 有趣的知识
 
 ## 1.transient 
@@ -110,7 +108,9 @@ Set<Integer> set = new HashSet<Integer>() {{
 #### (3) 注意
 双括号初始化生成的对象对应的实体类不是原来的实体类,因为实现上实际上通过子类的方式实现的.
 
-## 3.Guava 工具包
+## 3.自定义迭代器
+
+implements Iterable
 
 
 ## 4. 代码规范
@@ -152,8 +152,14 @@ https://blog.csdn.net/qq_37964379/article/details/88528997
 
 https://codesearch.aixcoder.com/#/
 
-## 14. 原子类
-https://blog.csdn.net/weixin_38003389/article/details/88569336
+## 14. @SuppressWarnings - 关闭编译器警告信息
+
+- all : 去除所有警告
+
+- boxing : 去除装箱拆箱警告
+- unchecked : 单类型的警告
+- unused : 未使用
+- rawtypes : 在类参数上使用泛型时抑制与非特定类型相关的警告
 
 ## 15. String
 StringBuilder 相较于 StringBuffer 有速度优势 在应用程序要求线程安全的情况下，必须使用 StringBuffer
@@ -198,18 +204,15 @@ SNAPSHOT：快照版，可以稳定使用，且仍在继续改进版本。
 - SR：修正版
 - Trial：试用版（一般有时间或者功能限制）
 
+#### 17. String intern 方法
+https://tech.meituan.com/2014/03/06/in-depth-understanding-string-intern.html
 
 
-#### 17. 自定义迭代器
-
-implements Iterable
-
-
-
-
-
-
-
+#### 18. JMX
+jmx 中 mbean 使用
+http://www.4k8k.xyz/article/chinabestchina/108458931
+与actuator 结合
+http://hk.noobyard.com/article/p-ymdepcfh-et.html
 
 
 

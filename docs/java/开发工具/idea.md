@@ -11,16 +11,16 @@
 
 # 二.常用功能设置
 
-## 1.代码提示不区分大小写
+## 2.1代码提示不区分大小写
 
 ```
 file -> setting -> editor -> general -> code completion  : match case
 ```
 
-## 2. idea的断点类型
+## 2.2 idea的断点类型
 
 
-## 3. Idea自带的快速开发方式 : Postfix Completion
+## 2.3 Idea自带的快速开发方式 : Postfix Completion
 - var : 快速定义一个局部变量，自带IDE的类型推断
 - nn : 快速进行NPE的判空保护
 - try : 快速对当前语句添加try catch异常捕获，同时IDE还会对catch中的Exception自动做类型推断
@@ -33,18 +33,18 @@ file -> setting -> editor -> general -> code completion  : match case
 - return : 快速实现方法中的值返回逻辑：
 - format : 快速实现字符串格式化
 
-## 4. 常用的快捷代码简写
+## 2.4 常用的快捷代码简写
 - psfs：定义字符串常量
 - main：添加入口函数
 - sout：实现日志输出
 
-## 5. 常用快捷键
+## 2.5 常用快捷键
 - 整行移动：Option + Shift + ↑/↓ ， CTRL+ alt + ↑/↓
 - 重复打印前一个单词 ： option + / 	
 - [idea-mac触摸板缩放字体](mac idea 触控板 缩放 字体大小)
 
-## 6. idea 安装 puml
-#### 安装步骤
+## 2.6 idea 安装 puml
+### 2.6.1 安装步骤
 ```shell
 # mac使用下面的下载 windows可自行搜索下载
 brew list graphviz
@@ -53,12 +53,22 @@ brew list graphviz
 # 进行idea的配置
 idea -> setting -> plantuml -> 配置 dot 路径
 ```
-#### 可能出现的问题
+### 2.6.2 可能出现的问题
 (1) mac下载`graphviz`, 如果出现下图提示错误,可能是网络问题,重新安装即可
 ```log
 curl: (35) LibreSSL SSL_connect: SSL_ERROR_SYSCALL in connection to d29vzk4ow07wi7.cloudfront.net:443
 Error: Failed to download resource "libtiff"
 ```
+
+
+## 2.7 idea 界面优化
+
+- View–>Toolbar
+- View–>Tool Buttons
+- 忽略大小写匹配 : File–>settings–>Editor–>General -->Code Completion --> Match case 
+
+
+
 
 # 三.官方文档地址
 [w3c文档](https://www.w3cschool.cn/intellij_idea_doc/intellij_idea_doc-p5nq2dle.html)

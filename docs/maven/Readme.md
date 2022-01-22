@@ -1,0 +1,1 @@
+打包问题总结 : 指定父 pom 是 apache 之后 , 每次打包都会在 apache 检测 licence 到最后打包时间不稳定 , 较慢

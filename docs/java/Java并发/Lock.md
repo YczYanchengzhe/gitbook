@@ -35,13 +35,22 @@
 select for update
 ```
 
+- 乐观锁 + 版本号
+```sql
+UPDATE table_name SET xxx = #{xxx}, version=version+1 where version =#{version};
+```
+
 ### 1.3 redis 实现分布式锁 
+
+#### 1.3.1 实现
 - 基于set / setnx
 ```lua
 - 获取锁
 SET resource_name unique_value NX PX 30000
+```
 
-- 释放锁（lua脚本中，一定要比较value，防止误解锁）
+```lua
+- 释放锁（lua脚本中，一定要比较value，防止误解锁）避免 Client 释放了其他 Client 申请的锁
 if redis.call("get",KEYS[1]) == ARGV[1] then
 	return redis.call("del",KEYS[1])
 else
@@ -50,11 +59,34 @@ end
 
 - 非阻塞，只能通过死循环实现，通过 Redis 的订阅发布模式来实现通知的成本太高
 - redis单点，主从切换可能出现锁丢失
+- 关于 value 的生成，官方推荐从 /dev/urandom 中取 20 个 byte 作为随机数。或者采用更加简单的方式，例如使用 RC4 加密算法在 /dev/urandom 中得到一个种子（Seed），然后生成一个伪随机流。
 ```
-
+```
+误解锁场景 : 
+Client A 获得了一个锁。当尝试释放锁的请求发送给 Redis 时被阻塞，没有及时到达 Redis。锁定时间超时，Redis 认为锁的租约到期，释放了这个锁。
+Client B 重新申请到了这个锁。Client A 的解锁请求到达，将 Client B 锁定的 key 解锁。
+Client C 也获得了锁。Client B 和 Client C 同时持有锁。
+```
 - 基于redlock / redisson
 
+#### 1.3.2 存在的问题
 
+**问题场景**
+
+- 如果 Client A 先取得了锁。其它 Client（比如说 Client B）在等待 Client A 的工作完成。这个时候，如果 Client A 被挂在了某些事上，比如一个外部的阻塞调用，或是 CPU 被别的进程吃满，或是不巧碰上了 Full GC，导致 Client A 花了超过平时几倍的时间。
+- 然后，我们的锁服务因为怕死锁，就在一定时间后，把锁给释放掉了。
+- 此时，Client B 获得了锁并更新了资源。
+- 这个时候，Client A 服务缓过来了，然后也去更新了资源。于是乎，把 Client B 的更新给冲掉了。这就造成了数据出错。
+
+
+
+![170961633226291_.pic](../../resources/technology/9.png)
+
+
+
+**问题解决 : 引入版本**
+
+![170971633226324_.pic](../../resources/technology/10.png)
 
 ### 1.4 基于zookeeper的实现
 原理 :
@@ -67,7 +99,7 @@ end
 - 读请求：向比自己序号小的最后一个写请求节点注册Watcher监听,只要监听自己前面的最后一次写入就可以了.
 - 写请求：向比自己序号小的最后一个节点注册Watcher监听,只要保证自己前面没人即可.
 
-
+[curator](https://curator.apache.org/index.html) : Guava is to Java what Curator is to Zookeeper.
 
 ### 1.5 基于ETCD实现
 
