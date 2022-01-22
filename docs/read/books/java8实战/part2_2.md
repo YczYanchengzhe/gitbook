@@ -239,7 +239,10 @@ test partitionPrimes2 fastest done cost 86
 
   
 
+### 6.3 总结
 
+- 总结了 Collectors 提供的所有方法
+- 自定义了Collector实现更高效的归约操作
 
 
 

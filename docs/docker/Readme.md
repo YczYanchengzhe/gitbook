@@ -39,7 +39,9 @@
 - --link : 链接不同的容器
 - -v : 宿主目录:容器目录 , 挂载磁盘
 
-## 三. 通过 Docker 启动 MongoDB
+## 三. 通过 Docker 启动 常用组件
+
+### 3.1 MongoDB
 
 - 官方文档 : https://hub.docker.com/_/mongo
 
@@ -60,5 +62,9 @@ docker exec -it mongo bash
 mongo -u admin -p admin
 ```
 
-
+### 3.2 Jedis
+```shell
+docker pull redis
+docker run --name redis -d -p 6379:6379 redis
+```
 
