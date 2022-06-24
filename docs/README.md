@@ -20,6 +20,6 @@ Asdjl , 一个努力的职场小白 !!!
  ### 联系我
  欢迎关注作者的公众号，可以直接后台留言 ! ! !
 
-<img src="resources/wechat/wechat.png" height="60%" width="60%" />
+<img src="resources/wechat/wechat.png" height="20%" width="20%" />
 
 ![wechat](resources/wechat/wechat.png)
