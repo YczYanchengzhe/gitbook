@@ -1,23 +1,25 @@
-# ����Գ��������
+# 程序猿自我修养
 
-> �����Ͳ�������ǧ�� , ����С�����Գɽ���!
-> ƴ����,ɧ��!
+> 不积跬步无以至千里 , 不积小流无以成江海!
+> 拼搏吧,骚年!
 
-Ŀǰ���ڸ�����....
+目前正在更新中....
 
-��ӭ��Ҷ�ඩ��~
+欢迎大家多多订阅~
 
-### ��������
+### 关于作者
 
-Asdjl , һ��Ŭ����ְ��С�� !!!
+Asdjl , 一个努力的职场小白 !!!
 
 
 
-### �����Ķ���ַ
+### 在线阅读地址
 
- GitHub Pages �����Ķ���[����](https://yczyanchengzhe.github.io/gitbook/#/) 
+ GitHub Pages 完整阅读：[进入](https://yczyanchengzhe.github.io/gitbook/#/) 
 
- ### ��ϵ��
- ��ӭ��ע���ߵĹ��ںţ�����ֱ�Ӻ�̨���� ! ! !
+ ### 联系我
+ 欢迎关注作者的公众号，可以直接后台留言 ! ! !
+
+<img src="resources/wechat/wechat.png" height="60%" width="60%" />
 
 ![wechat](resources/wechat/wechat.png)
