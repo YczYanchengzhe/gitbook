@@ -153,5 +153,18 @@ ALTER TABLE T ADD PRIMARY KEY (id);
 ALTER TABLE T ENGINE=InnoDB
 ```
 
+**MySQL 重建表流程**
 
+MySQL 5.5 之前 : 在整个 DDL 过程中，表 A 中不能有更新
 
+![img](../../resources/sql/practice/1_4.png)
+
+MySQL 5.5 之后 : OnLine DDL
+
+- 建立一个临时文件，扫描表 A 主键的所有数据页；
+- 用数据页中表 A 的记录生成 B+ 树，存储到临时文件中；
+- 生成临时文件的过程中，将所有对 A 的操作记录在一个日志文件（row log）中，对应的是图中 state2 的状态；
+- 临时文件生成后，将日志文件中的操作应用到临时文件，得到一个逻辑数据上与表 A 相同的数据文件，对应的就是图中 state3 的状态；
+- 用临时文件替换表 A 的数据文件。
+
+![2d1cfbbeb013b851a56390d38b5321f0](../../resources/sql/practice/1_5.png)

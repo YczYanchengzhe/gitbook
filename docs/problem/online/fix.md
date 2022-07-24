@@ -15,3 +15,8 @@ jstack <pid> > thread.log
 cat thread.log | grep <tid>  -C 10
 ```
 
+## 二. 使用 mat 内存分析工具
+#### 2.1 JDK 问题设置
+```xml
+<string>-vm</string><string>/jdkPath/azul-11.0.11/Contents/Home/bin/java</string>
+```

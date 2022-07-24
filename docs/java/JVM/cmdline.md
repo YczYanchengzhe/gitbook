@@ -49,7 +49,7 @@ jmap -heap pid
 jmap -histo pid
 # histo 某个进程 看哪些类占用的空间最多, 前20
 jmap -histo:live <pid> | head -20
-# ump:format=b,file=xxxx.hprof Dump 堆内存。
+# jump:format=b,file=xxxx.hprof Dump 堆内存。
 jmap -dump:format=b,file=3826.hprof 3826
 ```
 

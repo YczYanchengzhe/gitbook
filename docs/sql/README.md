@@ -102,5 +102,16 @@ ClicnkHouse  :  https://clickhouse.tech/docs/zh/#cpu
 
 https://blog.csdn.net/ydyang1126/article/details/72473828
 
+#### 25. mysql按天，小时，半小时，N分钟，分钟进行数据分组统计
+
+```sql
+-- 按照天分组
+SELECT DATE(TimeStart) AS date
+FROM table_name
+GROUP BY date
+ORDER BY date;
+-- 按照小时 :  DATE_FORMAT(TimeStart, '%Y-%m-%d %H:00:00') AS time
+-- DATE_FORMAT 方法使用 https://www.w3school.com.cn/sql/func_date_format.asp
+```
 
 # 参考资料
