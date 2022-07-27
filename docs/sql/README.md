@@ -114,4 +114,29 @@ ORDER BY date;
 -- DATE_FORMAT 方法使用 https://www.w3school.com.cn/sql/func_date_format.asp
 ```
 
+#### 26. MySQL 判断是不是空
+```sql
+select * from tablename where name  is null;
+```
+#### 27. MySQL case when
+```sql
+select employee_id ,
+-- case when 条件语句 , 某个条件成立时候执行 then 逻辑
+-- left 从左边开始截取某几个字符 left(原始字符串 ,截取数量)
+-- <> 不等于
+case when employee_id % 2 =1 and left(name,1) <> 'M' then salary else 0 end as bonus
+from Employees
+order by employee_id asc;
+```
+
+```sql
+update Salary 
+set sex= 
+-- update 中的 case 语句
+case when sex='m' 
+    then 'f' 
+    else 'm' 
+end;
+```
+
 # 参考资料
