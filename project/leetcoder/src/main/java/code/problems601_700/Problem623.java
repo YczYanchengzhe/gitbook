@@ -1,11 +1,8 @@
 package code.problems601_700;
 
 import code.common.TreeNode;
-import jdk.nashorn.internal.runtime.PrototypeObject;
 
 import java.util.ArrayDeque;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Queue;
 
 /**
