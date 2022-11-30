@@ -1,6 +1,8 @@
 package code.problems001_100;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * @author chengzhe yan
@@ -29,6 +31,5 @@ public class Problem27 {
 		int i = problem27.removeElement(ints, 2);
 		System.out.println(i);
 		System.out.println(Arrays.toString(ints));
-
 	}
 }
