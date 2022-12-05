@@ -15,4 +15,24 @@ public class ListNode {
 		val = x;
 		next = head;
 	}
+
+	@Override
+	public String toString() {
+		return "ListNode{" +
+				"val=" + val +
+				", next=" + next +
+				'}';
+	}
+
+	public String print() {
+		StringBuilder s = new StringBuilder();
+		ListNode curr = this;
+		while (curr != null) {
+			s.append(" --> ").append(curr.val);
+			curr = curr.next;
+		}
+		return s.toString();
+	}
+
+
 }
