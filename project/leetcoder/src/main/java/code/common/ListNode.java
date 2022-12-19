@@ -18,10 +18,11 @@ public class ListNode {
 
 	@Override
 	public String toString() {
-		return "ListNode{" +
-				"val=" + val +
-				", next=" + next +
-				'}';
+//		return "ListNode{" +
+//				"val=" + val +
+//				", next=" + next +
+//				'}';
+		return "a";
 	}
 
 	public String print() {
