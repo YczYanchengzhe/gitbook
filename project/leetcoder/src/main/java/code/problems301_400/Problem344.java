@@ -7,7 +7,7 @@ package code.problems301_400;
  *
  * @author yanchengzhe
  */
-public class problem344 {
+public class Problem344 {
 
     public static void reverseString(char[] s) {
         if (s.length == 0) {
