@@ -14,6 +14,7 @@
 5. [byte-buddy-中文版](https://notes.diguage.com/byte-buddy-tutorial/#reloading-a-class)
 6. [Raft 算法动态演示](http://www.kailing.pub/raft/index.html)
 7. [Java注解用法详解](https://www.cnblogs.com/fsjohnhuang/p/4040785.html)
+8. [凤凰架构](http://icyfenix.cn/)
 
 
 
